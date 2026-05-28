@@ -13,81 +13,68 @@ public class UIManager : MonoBehaviour
 
     private Menu currentState;
     
-    private GameObject PauseMenu;
-    private GameObject OptionsMenu;
-    private GameObject BeginScreen;
-    private GameObject EndScreen;
-    
-    private GameObject PauseButton;
+    [SerializeField] GameObject PauseMenu;
+    [SerializeField] GameObject OptionsMenu;
+    [SerializeField] GameObject BeginScreen;
+    [SerializeField] GameObject EndScreen;
+    [SerializeField] GameObject PauseButton;
 
-    
-    
+    public static UIManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        } else if (instance != this && instance != null)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     
     void Start()
     {
-        PauseMenu =  GameObject.Find("PauseMenu");
-        BeginScreen = GameObject.Find("BeginScreen");
-        EndScreen = GameObject.Find("EndScreen");
-        OptionsMenu = GameObject.Find("OptionsMenu");
-        
-        PauseButton = GameObject.Find("PauseButton");
-
-        
         currentState = Menu.StartScreen;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        switch (currentState)
-        {
-            case Menu.StartScreen:
-                BeginScreen.SetActive(true);
-                PauseMenu.SetActive(false);
-                EndScreen.SetActive(false);
-                
-                PauseButton.SetActive(false);
-                break;
-            case Menu.PlayMode:
-                BeginScreen.SetActive(false);
-                PauseMenu.SetActive(false);
-                EndScreen.SetActive(false);
-                
-                PauseButton.SetActive(true);
-                break;
-            case Menu.PauseMode:
-                BeginScreen.SetActive(false);
-                PauseMenu.SetActive(true);
-                OptionsMenu.SetActive(false);
-                EndScreen.SetActive(false);
-                
-                PauseButton.SetActive(false);
-                break;
-            case Menu.OptionsMode:
-                BeginScreen.SetActive(false);
-                PauseMenu.SetActive(false);
-                OptionsMenu.SetActive(true);
-                EndScreen.SetActive(false);
-                
-                PauseButton.SetActive(false);
-                break;
-            case Menu.EndScreen:
-                BeginScreen.SetActive(false);
-                PauseMenu.SetActive(false);
-                EndScreen.SetActive(true);
-                
-                PauseButton.SetActive(false);
-                break;
-        }
-    }
-
+    
     public void PauseButtonClicked()
     {
         currentState = Menu.PauseMode;
+        UpdateUI();
     }
 
     public void PlayButtonClicked()
     {
         currentState = Menu.PlayMode;
+        UpdateUI();
+    }
+
+    public void RestartButtonClicked()
+    {
+        currentState = Menu.StartScreen;
+        UpdateUI();
+    }
+
+    public void OptionsButtonClicked()
+    {
+        currentState = Menu.OptionsMode;
+        UpdateUI();
+    }
+
+    public void QuitButtonClicked()
+    {
+        currentState = Menu.EndScreen;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        BeginScreen.SetActive(currentState == Menu.StartScreen);
+        PauseMenu.SetActive(currentState == Menu.PauseMode);
+        OptionsMenu.SetActive(currentState == Menu.OptionsMode);
+        EndScreen.SetActive(currentState == Menu.EndScreen);
+        
+        PauseButton.SetActive(currentState == Menu.PlayMode);
     }
 }
