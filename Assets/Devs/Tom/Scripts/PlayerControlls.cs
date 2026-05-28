@@ -12,6 +12,8 @@ public class PlayerControlls : MonoBehaviour
     public Vector3 move { get; private set; }
     [SerializeField] private float M_Speed;
 
+    [SerializeField] private GameObject Inventory;
+
     private void Awake()
     {
         _currentMap = inputSystem.currentActionMap;
@@ -34,5 +36,13 @@ public class PlayerControlls : MonoBehaviour
     {
             transform.Translate(move * M_Speed * Time.deltaTime);
            // transform.GetComponent<Rigidbody>().AddForce()
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<Seeds>() != null && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
+        {
+            Inventory.GetComponent<Inventory>().InventoryItems.Add(Instantiate(other.GetComponent<Seeds>().Seed, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
+        }
     }
 }
