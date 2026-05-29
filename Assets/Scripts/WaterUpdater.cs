@@ -19,7 +19,14 @@ public class WaterUpdater : MonoBehaviour
             Debug.Log("you fucked up getting the water well from updater");
         }
         
-        inventoryScript = player.GetComponent<Inventory>();
+        player = GameObject.Find("Player");
+        
+        inventoryScript = player.GetComponentInChildren<Inventory>();
+
+        if (inventoryScript == null)
+        {
+            Debug.Log("you once again fucked up your inventory getcomponent, you fuckup!");
+        }
         
         Well.Inventory = inventoryScript;
         
