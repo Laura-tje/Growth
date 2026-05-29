@@ -43,6 +43,19 @@ public class PlayerControlls : MonoBehaviour
         if(other.GetComponent<Seeds>() != null && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
         {
             Inventory.GetComponent<Inventory>().InventoryItems.Add(Instantiate(other.GetComponent<Seeds>().Seed, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
+
+            for (int i = 0; i < Inventory.GetComponent<Inventory>().InventoryItems.Count; i++)
+            {
+                for (int j = 0; j < Inventory.GetComponent<Inventory>().InventorySlots.Count; j++)
+                {
+                    Inventory.GetComponent<Inventory>().InventoryItems[i].gameObject.transform.position = Inventory.GetComponent<Inventory>().InventorySlots[i].gameObject.transform.position;
+                }
+            }
+
+            for (int i = 0; i < Inventory.GetComponent<Inventory>().InventoryItems.Count; i++)
+            {
+                Inventory.GetComponent<Inventory>().InventoryItems[i].transform.parent = Inventory.GetComponent<Inventory>().InventorySlots[i].gameObject.transform;
+            }
         }
     }
 }

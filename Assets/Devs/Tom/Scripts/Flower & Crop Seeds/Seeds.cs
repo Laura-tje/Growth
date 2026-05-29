@@ -4,21 +4,21 @@ public class Seeds : MonoBehaviour
 {
     public GameObject Seed;
 
-    private enum FlowerSeeds 
-    {
-        Rose,
-        Lily,
-        Laveneder,
-        Sunflower
-    }
+    //public enum FlowerSeeds
+    //{
+    //    Rose,
+    //    Lily,
+    //    Laveneder,
+    //    Sunflower
+    //}
 
-    [SerializeField] private FlowerSeeds flowerSeed;
+    //[SerializeField] public FlowerSeeds flowerSeed;
 
-    private enum CropSeeds 
-    {
-        
-    }
-    [SerializeField] private CropSeeds cropSeed;
+    //private enum CropSeeds
+    //{
+
+    //}
+    //[SerializeField] private CropSeeds cropSeed;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
