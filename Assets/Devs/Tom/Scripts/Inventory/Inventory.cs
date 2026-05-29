@@ -8,6 +8,15 @@ public class Inventory : MonoBehaviour
 
     public List<GameObject> InventorySlots;
 
+    public List<GameObject> roseSeeds;
+
+    public List<GameObject> lilySeeds;
+
+    public List<GameObject> lavenenderSeeds;
+
+    public List<GameObject> sunFlowerSeeds;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
