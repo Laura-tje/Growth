@@ -3,16 +3,10 @@ using UnityEngine;
 public class WaterWell : MonoBehaviour
 {
     public float Level;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Inventory Inventory; //this is assigned in waterupdater because i dont know...
     void Start()
     {
         Level = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,7 +15,7 @@ public class WaterWell : MonoBehaviour
 
         if (other.gameObject.name == "Player")
         {
-            //put the water in inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //Inventory.addToInventory(other.gameObject);
         }
     }
 

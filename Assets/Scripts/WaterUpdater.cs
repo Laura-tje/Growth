@@ -21,6 +21,8 @@ public class WaterUpdater : MonoBehaviour
         
         inventoryScript = player.GetComponent<Inventory>();
         
+        Well.Inventory = inventoryScript;
+        
     }
 
     // Update is called once per frame
@@ -39,11 +41,14 @@ public class WaterUpdater : MonoBehaviour
             {
                 Well.UpdateWell();
                 //inventory -= neededamount
+                Debug.Log("The player successfully updated the water well to convenience himself. How selfish...");
             } else if ( /*inventoryScript.amountofcrops < neededAmount*/ false) //FIX THISSSS AS WELLLLLLLLLLL (WATERWELL)!!!!!!!!!!!!!!!!!!!!!!
             {
-                let amount = 
-                //inventory -= neededamount
-                
+                /*let amount = inventoryScript.amountofcrops
+                inventory -= amount
+                neededamount -= amount*/
+                Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");
+
             }
             
         }
