@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Water
+  - Spawn_Locations
+  - Spawn_Location
+  - Undefined
+  - Harvestable Object
   layers:
   - Default
   - TransparentFX
@@ -12,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Items
   - 
   - 
+  - Item
   - 
   - 
   - 
