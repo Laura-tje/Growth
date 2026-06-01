@@ -9,15 +9,21 @@ public class WaterWell : MonoBehaviour
     public Inventory Inventory; //this is assigned in waterupdater because i dont know...
     public float GeneratedWater;
     [SerializeField] private TextMeshProUGUI textAmountWater;
+    [SerializeField] private float StartTime;
+    private float PassedTime;
+    private GameObject Player;
+    [SerializeField] private GameObject WaterPrefab;
     void Start()
     {
-        Level = 1;
+        Level = 0;
         GeneratedWater = 0f;
     }
 
     void Update()
     {
         GenerateWater();
+        
+        textAmountWater.text = GeneratedWater.ToString();
     }
 
     //player getting water
@@ -27,8 +33,9 @@ public class WaterWell : MonoBehaviour
         {
             Debug.Log("Player was thirsty and got some water");
             float number = GeneratedWater;
-            //Inventory.addToInventory(other.gameObject);
+            Inventory.AddObjectToInventory(gameObject);
             GeneratedWater -= number;
+            PassedTime = 0f;
         };
     }
 
@@ -38,9 +45,18 @@ public class WaterWell : MonoBehaviour
         Debug.Log(Level);
     }
 
-    public void GenerateWater()
+    public void GenerateWater() 
     {
-        GeneratedWater += (Time.deltaTime * (Level));
-        textAmountWater.text = math.round(GeneratedWater).ToString();
+        if (GeneratedWater >= 1f) return; // Al vol, niks doen
+
+        PassedTime += Time.deltaTime;
+
+        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Nooit negatief of 0
+    
+        if (PassedTime >= timeNeeded)
+        {
+            GeneratedWater = 1f;
+            PassedTime = 0f;
+        }
     }
 }
