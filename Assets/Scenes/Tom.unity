@@ -379,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3803109583894666525, guid: c397c38953f07f0438bfa84199b64a52, type: 3}
       propertyPath: m_TagString
-      value: Undefined
+      value: Harvestable Object
       objectReference: {fileID: 0}
     - target: {fileID: 5466130564494396190, guid: c397c38953f07f0438bfa84199b64a52, type: 3}
       propertyPath: m_LocalPosition.x
