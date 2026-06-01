@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class Seeds : MonoBehaviour
+public class ItemList : MonoBehaviour
 {
-    public enum FlowerSeeds
+    public GameObject Item;
+
+    public enum ObtainablItems
     {
-        RoseSeed,
-        LilySeed,
-        LavenederSeed,
-        SunflowerSeed
+        Seed,
+        Water,
+        Soil
     }
 
-    [SerializeField] public FlowerSeeds flowerSeed;
+    [SerializeField] public ObtainablItems obtainablItems;
 
     private enum CropSeeds
     {
@@ -29,10 +30,5 @@ public class Seeds : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public virtual void Test()
-    {
-        Debug.Log("Work");
     }
 }

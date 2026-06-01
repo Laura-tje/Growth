@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class RoseFlower : Seeds
@@ -12,5 +13,10 @@ public class RoseFlower : Seeds
     void Update()
     {
         
+    }
+
+    public override void Test()
+    {
+        Debug.Log("Boop");
     }
 }
