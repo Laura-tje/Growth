@@ -58,9 +58,9 @@ public class Spawn_Objects_System : MonoBehaviour
 
     }
 
-}/*
+}*/
 
-//F this version of vsc i cant find my errors.
+//F this version of vsc i cant find my errors, so I asked chatgpt to organize my script, haven't asked it to change anything.
 
 using UnityEngine;
 using System.Collections;
@@ -94,16 +94,16 @@ public class Spawn_Objects_System : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(180f);
+            yield return new WaitForSeconds(10f);
+
+            Debug.Log("Spawning new objecfts");
 
             foreach (GameObject spawn_Location in _Spawn_Locations)
             {
                 // If object already exists at spawn point
                 if (spawn_Location.transform.childCount > 0)
                 {
-                    GameObject destroy_Object =
-                        spawn_Location.transform.GetChild(0).gameObject;
-
+                    GameObject destroy_Object = spawn_Location.transform.GetChild(0).gameObject;
                     Destroy(destroy_Object);
                 }
 
