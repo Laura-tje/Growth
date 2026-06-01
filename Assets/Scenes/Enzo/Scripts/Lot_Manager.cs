@@ -100,7 +100,7 @@ public class Lot_Manager : MonoBehaviour
         if ( other != null && player_Script._Player_Mats_Owned > 0)
         {
 
-            if ( _Current_Amount_Mats >= _Max_Amount_Mats_Grow)
+            if ( _Current_Amount_Mats == _Max_Amount_Mats_Grow)
             {
 
                 yield return null;
