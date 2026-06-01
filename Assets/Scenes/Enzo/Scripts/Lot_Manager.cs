@@ -10,12 +10,26 @@ public class Lot_Manager : MonoBehaviour
     [SerializeField] private bool _Plant_Still_Growing;
     [SerializeField] private bool _Plant_Done_Growing;
     [SerializeField] private bool _Transfering;
- 
-    [SerializeField] private int _Current_Amount_Mats;
-    private int _Max_Amount_Mats_Grow;
+
+    [SerializeField] private ItemForGrowth itemForGrowth;
+
+    public enum TypeFlowers
+    {
+        Rose,
+        Lily,
+        Laveneder,
+        Sunflower
+    }
+
+    [SerializeField] public TypeFlowers typeFlower;
+
+    //[SerializeField] private int _Current_Amount_Mats;
+    //private int _Max_Amount_Mats_Grow;
 
     private void Start()
     {
+        itemForGrowth.MaxAmountOfItemsNeeded();
+        itemForGrowth.CurrentAmountOfItems();
 
         _Check_Plant();
         _Plant_Still_Growing = true;
@@ -40,7 +54,7 @@ public class Lot_Manager : MonoBehaviour
             if ( _Plant.transform.GetChild(0).gameObject.name == "Plant_Type_1")
             {
 
-                _Plant_Growth_Plan_1();
+                //_Plant_Growth_Plan_1();
 
                 Debug.Log("Plant type 1 growth plan assigned to lot");
 
@@ -50,14 +64,14 @@ public class Lot_Manager : MonoBehaviour
 
     }
 
-    private void _Plant_Growth_Plan_1()
-    {
+    //private void _Plant_Growth_Plan_1()
+    //{
 
-        int Mats_Needed = 50;
+    //    int Mats_Needed = 50;
 
-        _Max_Amount_Mats_Grow = Mats_Needed;
+    //    _Max_Amount_Mats_Grow = Mats_Needed;
 
-    }
+    //}
 
      
     private void OnTriggerStay(Collider other)
@@ -79,7 +93,6 @@ public class Lot_Manager : MonoBehaviour
 
         if ( other.gameObject == _Player && _Plant_Still_Growing && _Transfering)
         {
-
             StopCoroutine(_Transfer_Mats(other));
 
             _Transfering = false;
@@ -100,7 +113,7 @@ public class Lot_Manager : MonoBehaviour
         if ( other != null && player_Script._Player_Mats_Owned > 0)
         {
 
-            if ( _Current_Amount_Mats == _Max_Amount_Mats_Grow)
+            if (itemForGrowth.currentAmountOfAllItems == itemForGrowth.allItemsNeeded)
             {
 
                 yield return null;
@@ -111,15 +124,12 @@ public class Lot_Manager : MonoBehaviour
 
             }
 
-            else if ( _Current_Amount_Mats <= _Max_Amount_Mats_Grow)
+            else if (itemForGrowth.currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
             {
 
-                while ( _Current_Amount_Mats <= _Max_Amount_Mats_Grow)
+                while (itemForGrowth.currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
                 {
-
-                    player_Script._Player_Mats_Owned --;
-
-                    _Current_Amount_Mats ++;
+                    //_Current_Amount_Mats ++;
 
                     yield return new WaitForSeconds(0.1f);  
 
@@ -138,16 +148,16 @@ public class Lot_Manager : MonoBehaviour
     private void Update()
     {
 
-        if ( _Current_Amount_Mats >= _Max_Amount_Mats_Grow)
-        {
+        //if ( _Current_Amount_Mats >= _Max_Amount_Mats_Grow)
+        //{
 
-            _Plant_Still_Growing = false;
+        //    _Plant_Still_Growing = false;
 
-            _Plant_Done_Growing = true;
+        //    _Plant_Done_Growing = true;
 
-            Debug.Log("Plant done growing");
+        //    Debug.Log("Plant done growing");
 
-        }
+        //}
 
     }
 
