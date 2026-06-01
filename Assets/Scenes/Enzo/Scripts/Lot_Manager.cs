@@ -129,9 +129,21 @@ public class Lot_Manager : MonoBehaviour
 
                 while (itemForGrowth.currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
                 {
-                    //_Current_Amount_Mats ++;
 
-                    yield return new WaitForSeconds(0.1f);  
+                    yield return new WaitForSeconds(0.1f);
+
+                    Seeds currentSeeds;
+                    for (int i = 0; i < other.GetComponentInChildren<Inventory>().InventoryItems.Count; i++)
+                    {
+                        if (other.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null)
+                        {
+                            currentSeeds = other.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>();
+                            if (currentSeeds.flowerSeed.GetType().GetEnumName(currentSeeds.flowerSeed) == typeFlower.GetType().GetEnumName(typeFlower))
+                            {
+
+                            }
+                        }
+                    }
 
                     Debug.Log("Transferring mats");
 
@@ -148,16 +160,16 @@ public class Lot_Manager : MonoBehaviour
     private void Update()
     {
 
-        //if ( _Current_Amount_Mats >= _Max_Amount_Mats_Grow)
-        //{
+        if (itemForGrowth.currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
+        {
 
-        //    _Plant_Still_Growing = false;
+            _Plant_Still_Growing = false;
 
-        //    _Plant_Done_Growing = true;
+            _Plant_Done_Growing = true;
 
-        //    Debug.Log("Plant done growing");
+            Debug.Log("Plant done growing");
 
-        //}
+        }
 
     }
 
