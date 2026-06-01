@@ -20,7 +20,8 @@ public class WaterWell : MonoBehaviour
         GenerateWater();
     }
 
-    private void OnTriggerStay(Collider other)
+    //player getting water
+    private void OnTriggerStay(Collider other) 
     {
         if (other.gameObject.name == "Player" && math.round(GeneratedWater) > 0)
         {
@@ -31,7 +32,7 @@ public class WaterWell : MonoBehaviour
         };
     }
 
-    public void UpdateWell()
+    public void UpdateWell() //called in waterupdater
     {
         Level++;
         Debug.Log(Level);
@@ -40,8 +41,6 @@ public class WaterWell : MonoBehaviour
     public void GenerateWater()
     {
         GeneratedWater += (Time.deltaTime * (Level));
-        //Debug.Log($"Generated water: {GeneratedWater}");
-        
         textAmountWater.text = math.round(GeneratedWater).ToString();
     }
 }
