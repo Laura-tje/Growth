@@ -2342,7 +2342,6 @@ MonoBehaviour:
   Well: {fileID: 0}
   neededAmount: 0
   increaseAmount: 0
-  player: {fileID: 1542370113}
 --- !u!65 &1181260322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2762,11 +2761,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!1 &1542370113 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521944381865530964, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
-  m_PrefabInstance: {fileID: 2131845295}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1630447258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,6 +3335,22 @@ PrefabInstance:
     - target: {fileID: 1521944381865530964, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878887792748806297, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878887792748806297, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878887792748806297, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878887792748806297, guid: 144bb2ff7df32934283446d69f8101a3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
