@@ -5,18 +5,24 @@ using Unity.Mathematics;
 public class SoilBox : MonoBehaviour
 {
     public float Level;
-    public Inventory Inventory; //this is assigned in soilupdater because i dont know...
+    public Inventory Inventory; //this is assigned in Soilupdater because i dont know...
     public float GeneratedSoil;
     [SerializeField] private TextMeshProUGUI textAmountSoil;
+    [SerializeField] private float StartTime;
+    private float PassedTime;
+    private GameObject Player;
+    //[SerializeField] private GameObject SoilPrefab;
     void Start()
     {
-        Level = 1;
+        Level = 0;
         GeneratedSoil = 0f;
     }
 
     void Update()
     {
         GenerateWater();
+        
+        textAmountSoil.text = GeneratedSoil.ToString();
     }
 
     //player getting water
@@ -24,10 +30,11 @@ public class SoilBox : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && math.round(GeneratedSoil) > 0)
         {
-            Debug.Log("Player was hungry and got some soil");
+            Debug.Log("Player was thirsty and got some water");
             float number = GeneratedSoil;
-            //Inventory.addToInventory(other.gameObject);
+            Inventory.AddObjectToInventory(gameObject);
             GeneratedSoil -= number;
+            PassedTime = 0f;
         };
     }
 
@@ -37,9 +44,18 @@ public class SoilBox : MonoBehaviour
         Debug.Log(Level);
     }
 
-    public void GenerateWater()
+    public void GenerateWater() 
     {
-        GeneratedSoil += (Time.deltaTime * (Level));
-        textAmountSoil.text = math.round(GeneratedSoil).ToString();
+        if (GeneratedSoil >= 1f) return; // Al vol, niks doen
+
+        PassedTime += Time.deltaTime;
+
+        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Nooit negatief of 0
+    
+        if (PassedTime >= timeNeeded)
+        {
+            GeneratedSoil = 1f;
+            PassedTime = 0f;
+        }
     }
 }
