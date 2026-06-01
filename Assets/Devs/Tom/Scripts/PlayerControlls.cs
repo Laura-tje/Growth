@@ -42,27 +42,36 @@ public class PlayerControlls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Harvestable Object" && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
-        {
-            GameObject currentObtainableItemInRange;
+        //if(other.gameObject.tag == "Harvestable Object" && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
+        //{
+        //    GameObject currentObtainableItemInRange;
 
-            currentObtainableItemInRange = other.gameObject;
+        //    currentObtainableItemInRange = other.gameObject;
             
-            Inventory.GetComponent<Inventory>().InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
+        //    Inventory.GetComponent<Inventory>().InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
 
-            if(currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
-            {
-                Inventory.GetComponent<Inventory>().seeds.Add(currentHarvestedItem);
+        //    if(currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
+        //    {
+        //        Inventory.GetComponent<Inventory>().seeds.Add(currentHarvestedItem);
 
-                //currentObtainableItemInRange.GetComponent<Seeds>().Test();
-            }
+        //        //currentObtainableItemInRange.GetComponent<Seeds>().Test();
+        //    }
 
-            AddObjectToInventory();
-        }
+        //    AddObjectToInventory();
+        //}
     }
 
-    private void AddObjectToInventory()
+    public void AddObjectToInventory(GameObject currentObtainableItemInRange)
     {
+        Inventory.GetComponent<Inventory>().InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
+
+        if (currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
+        {
+            Inventory.GetComponent<Inventory>().seeds.Add(currentHarvestedItem);
+
+            //currentObtainableItemInRange.GetComponent<Seeds>().Test();
+        }
+
         for (int i = 0; i < Inventory.GetComponent<Inventory>().InventoryItems.Count; i++)
         {
             for (int j = 0; j < Inventory.GetComponent<Inventory>().InventorySlots.Count; j++)
