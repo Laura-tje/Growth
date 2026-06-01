@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
 
     public List<GameObject> seeds;
 
+    private GameObject currentHarvestedItem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,5 +30,30 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddObjectToInventory(GameObject currentObtainableItemInRange)
+    {
+        InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform));
+
+        if (currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
+        {
+            seeds.Add(currentHarvestedItem);
+
+            //currentObtainableItemInRange.GetComponent<Seeds>().Test();
+        }
+
+        for (int i = 0; i < InventoryItems.Count; i++)
+        {
+            for (int j = 0; j < InventorySlots.Count; j++)
+            {
+                InventoryItems[i].gameObject.transform.position = InventorySlots[i].gameObject.transform.position;
+            }
+        }
+
+        for (int i = 0; i < InventoryItems.Count; i++)
+        {
+            InventoryItems[i].transform.parent = InventorySlots[i].gameObject.transform;
+        }
     }
 }
