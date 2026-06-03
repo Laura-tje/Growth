@@ -14,7 +14,7 @@ public enum SoundType
 public class Sound_Manage_III : MonoBehaviour
 {
 
-    [SerializeField] private AudioClip[] _Sound_Clips;
+    public AudioClip[] _Sound_Clips;
     private static Sound_Manage_III _Instance;
     private AudioSource _Audio_Source;
 
