@@ -18,7 +18,7 @@ public class Search_Audio_Clip_By_Name : MonoBehaviour
     private void _Search_For_Audio_Clip(string _Audio_Clip_Name)
     {
 
-        for (int i = 0; i < _Sound_Manager._Sound_Clips.Length; i++)
+        /*for (int i = 0; i < _Sound_Manager._Sound_Clips.Length; i++)
         {
 
             if (_Sound_Manager._Sound_Clips[i].name.Equals(_Audio_Clip_Name, System.StringComparison.OrdinalIgnoreCase))
@@ -32,7 +32,7 @@ public class Search_Audio_Clip_By_Name : MonoBehaviour
 
             }
 
-        }
+        }*/
 
     }
 
@@ -52,6 +52,13 @@ public class Search_Audio_Clip_By_Name : MonoBehaviour
                 Debug.Log($"Parsed sound: {sound}");
 
                 Sound_Manage_III._Play_Sound(sound);
+
+            }
+
+            else 
+            {
+                
+                Debug.Log($"Sound '{input}' not found.");
 
             }
 
