@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2093044431363822748}
   m_Layer: 0
   m_Name: Soil Box
-  m_TagString: Untagged
+  m_TagString: Harvestable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   Inventory: {fileID: 0}
   GeneratedSoil: 0
   textAmountSoil: {fileID: 1759003089351469232}
+  StartTime: 0
 --- !u!1 &1779657155328588751
 GameObject:
   m_ObjectHideFlags: 0

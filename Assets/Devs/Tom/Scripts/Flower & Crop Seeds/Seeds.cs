@@ -4,13 +4,13 @@ public class Seeds : MonoBehaviour
 {
     public enum FlowerSeeds
     {
-        RoseSeed,
-        LilySeed,
-        LavenederSeed,
-        SunflowerSeed
+        Rose, 
+        Lily,
+        Laveneder,
+        Sunflower
     }
 
-    [SerializeField] public FlowerSeeds flowerSeed;
+    [SerializeField] public FlowerSeeds flowerSeed; 
 
     private enum CropSeeds
     {
