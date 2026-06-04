@@ -15,7 +15,7 @@ public class Sound_Manage_III : MonoBehaviour
 {
 
     public Sound_Clips[] _Sound_Clips;
-    private static Sound_Manage_III _Instance;
+    public static Sound_Manage_III _Instance;
     private AudioSource _Audio_Source;
 
     private void Awake()
@@ -32,14 +32,59 @@ public class Sound_Manage_III : MonoBehaviour
 
     }
 
-    public static void _Play_Sound(SoundType _Sound, float _Volume = 1.0f)
+    public static void _Play_Sound(SoundType _Sound, int _Clip_Index = -1, float _Volume = 1.0f)
     {
 
-        AudioClip[] clips = _Instance._Sound_Clips[(int) _Sound]._Sounds;
+        /*AudioClip[] clips = _Instance._Sound_Clips[(int) _Sound]._Sounds;
         AudioClip _Random_Clip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        _Instance._Audio_Source.PlayOneShot(_Random_Clip, _Volume);
+        _Instance._Audio_Source.PlayOneShot(_Random_Clip, _Volume);*/
 
-        //_Instance._Audio_Source.PlayOneShot(_Instance._Sound_Clips[(int) _Sound], _Volume);
+        AudioClip[] _Clips = _Instance._Sound_Clips[(int) _Sound]._Sounds;
+
+        if (_Clips.Length == 0)
+        {
+
+            return;
+
+        }
+
+        AudioClip _Clip;
+
+        if (_Clip_Index < 0)
+        {
+
+            _Clip = _Clips[UnityEngine.Random.Range(0, _Clips.Length)];
+
+        }
+        else
+        {
+
+            _Clip = _Clips[Mathf.Clamp(_Clip_Index, 0, _Clips.Length - 1)];
+
+        }
+
+        _Instance._Audio_Source.PlayOneShot(_Clip, _Volume);
+
+
+        //Different ways to call this function.
+
+        //#Random clip if the array has more than one sound.
+        //_Sound_Manage_III._Play_Sound(SoundType.X);
+        ///# X = Specific sound clip.
+
+        //#The first sound clip of an array.
+        //_Sound_Manage_III._Play_Sound(SoundType.X, 0);
+        //# X = Specific sound clip.
+
+        //# Specific sound clip in a single array element.
+        //_Sound_Manage_III._Play_Sound(SoundType.X, Y);
+        //# X = Specific sound clip. & Y = Specific sound clip in X.
+
+        //# Specific sound clip with with volume control options.
+        //_Sound_Manage_III._Play_Sound(SoundType.X, Y, Z);
+        //# X = Specific sound clip. & Y = Specific sound clip in X. & Z = Specific volume setting.
+
+
 
     }
 

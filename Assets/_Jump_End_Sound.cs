@@ -11,7 +11,7 @@ public class _Jump_End_Sound : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Sound_Manage_III._Play_Sound(_Jump_Sound, _Volume);
+        Sound_Manage_III._Play_Sound(_Jump_Sound, 0, _Volume);
 
     }
 
