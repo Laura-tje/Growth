@@ -9,6 +9,7 @@ public class PlayerControlls : MonoBehaviour
     private InputActionMap _currentMap;
 
     private InputAction _moveAction;
+    private GameObject _playerChild;
     public Vector3 move { get; private set; }
     [SerializeField] private float M_Speed;
 
@@ -28,7 +29,7 @@ public class PlayerControlls : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _playerChild =  transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -36,26 +37,34 @@ public class PlayerControlls : MonoBehaviour
     {
             transform.Translate(move * M_Speed * Time.deltaTime);
            // transform.GetComponent<Rigidbody>().AddForce()
+        
+
+           if (move != Vector3.zero)
+           {
+               Quaternion targetRotation = Quaternion.LookRotation(move);
+               _playerChild.transform.rotation = Quaternion.RotateTowards(_playerChild.transform.rotation, targetRotation, 500f * Time.deltaTime);
+           }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Seeds>() != null && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
-        {
-            Inventory.GetComponent<Inventory>().InventoryItems.Add(Instantiate(other.GetComponent<Seeds>().Seed, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
+        //if(other.gameObject.tag == "Harvestable Object" && Inventory.GetComponent<Inventory>().InventoryItems.Count < 5)
+        //{
+        //    GameObject currentObtainableItemInRange;
 
-            for (int i = 0; i < Inventory.GetComponent<Inventory>().InventoryItems.Count; i++)
-            {
-                for (int j = 0; j < Inventory.GetComponent<Inventory>().InventorySlots.Count; j++)
-                {
-                    Inventory.GetComponent<Inventory>().InventoryItems[i].gameObject.transform.position = Inventory.GetComponent<Inventory>().InventorySlots[i].gameObject.transform.position;
-                }
-            }
+        //    currentObtainableItemInRange = other.gameObject;
+            
+        //    Inventory.GetComponent<Inventory>().InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, Inventory.transform.position, Inventory.transform.rotation, Inventory.gameObject.transform));
 
-            for (int i = 0; i < Inventory.GetComponent<Inventory>().InventoryItems.Count; i++)
-            {
-                Inventory.GetComponent<Inventory>().InventoryItems[i].transform.parent = Inventory.GetComponent<Inventory>().InventorySlots[i].gameObject.transform;
-            }
-        }
+        //    if(currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
+        //    {
+        //        Inventory.GetComponent<Inventory>().seeds.Add(currentHarvestedItem);
+
+        //        //currentObtainableItemInRange.GetComponent<Seeds>().Test();
+        //    }
+
+        //    AddObjectToInventory();
+        //}
     }
+
 }

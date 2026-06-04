@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 3364545668166082699}
   - component: {fileID: 1302874143572919430}
   - component: {fileID: 6197784632137505850}
-  - component: {fileID: 1703504921143420533}
   - component: {fileID: 5958283087999545215}
+  - component: {fileID: 6933006685494893053}
+  - component: {fileID: 5803611201474892956}
   m_Layer: 0
   m_Name: Rose Flower
-  m_TagString: Untagged
+  m_TagString: Harvestable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,21 +111,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1703504921143420533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3803109583894666525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b6611e2bae1a741a56075f81f22318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Seed: {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
-  flowerSeed: 0
-  cropSeed: 0
 --- !u!135 &5958283087999545215
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +132,32 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6933006685494893053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803109583894666525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
+  obtainablItems: 0
+  cropSeed: 0
+--- !u!114 &5803611201474892956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803109583894666525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b6611e2bae1a741a56075f81f22318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerSeed: 0
+  cropSeed: 0
