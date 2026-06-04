@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3148463892527175237}
   m_Layer: 0
-  m_Name: ajkl;djkl;afd
+  m_Name: rotationhelp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
