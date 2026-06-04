@@ -161,3 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerSeed: 0
   cropSeed: 0
+  Seed: {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
