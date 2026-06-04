@@ -13,6 +13,17 @@ public class WaterWell : MonoBehaviour
     private float PassedTime;
     private GameObject Player;
     [SerializeField] private GameObject WaterPrefab;
+
+    public enum WaterState
+    {
+        Empty,
+        Can,
+        Hose,
+        Well,
+    }
+    
+    public WaterState currentState;
+
     void Start()
     {
         Level = 0;
@@ -41,8 +52,20 @@ public class WaterWell : MonoBehaviour
 
     public void UpdateWell() //called in waterupdater
     {
-        Level++;
-        Debug.Log(Level);
+        switch (currentState)
+        {
+            case WaterState.Empty:
+                currentState = WaterState.Can;
+                break;
+            case WaterState.Can:
+                currentState = WaterState.Hose;
+                break;
+            case WaterState.Hose:
+                currentState = WaterState.Well;
+                break;
+            case WaterState.Well:
+                break;
+        }
     }
 
     public void GenerateWater() 
