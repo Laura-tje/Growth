@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -13,10 +14,31 @@ public class Lot_Manager : MonoBehaviour
     [SerializeField] private bool _Plant_Done_Growing;
     [SerializeField] private bool _Transfering;
 
-    [SerializeField] private ItemForGrowth itemForGrowth;
+    [SerializeField] private ItemForGrowth roseItemForGrowth;
+
+    [SerializeField] private ItemForGrowth lilyItemForGrowth;
+
+    [SerializeField] private ItemForGrowth lavenderItemForGrowth;
+
+    [SerializeField] private ItemForGrowth sunflowerItemForGrowth;
+
+    private ItemForGrowth itemForGrowth;
+
+
+    [SerializeField] private List<int> GrowthRanks;
+
+
+    public int currentAmountOfSeeds;
+
+    public int currentAmountOfWater;
+
+    public int currentAmountOfSoil;
+
+    public int currentAmountOfAllItems;
 
     public enum TypeFlowers
     {
+        None,
         Rose,
         Lily,
         Laveneder,
@@ -31,7 +53,7 @@ public class Lot_Manager : MonoBehaviour
     private void Start()
     {
         itemForGrowth.MaxAmountOfItemsNeeded();
-        itemForGrowth.CurrentAmountOfItems();
+        CurrentAmountOfItems();
 
         _Check_Plant();
         _Plant_Still_Growing = true;
@@ -106,7 +128,7 @@ public class Lot_Manager : MonoBehaviour
         if ( Player != null && Player.GetComponentInChildren<Inventory>().InventoryItems.Count > 0)
         {
 
-            if (itemForGrowth.currentAmountOfAllItems == itemForGrowth.allItemsNeeded)
+            if (currentAmountOfAllItems == itemForGrowth.allItemsNeeded)
             {
 
                 yield return null;
@@ -121,10 +143,10 @@ public class Lot_Manager : MonoBehaviour
 
             }
 
-            else if (itemForGrowth.currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
+            else if (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
             {
 
-                while (itemForGrowth.currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
+                while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
                 {
 
                     yield return new WaitForSeconds(0.1f);
@@ -134,10 +156,34 @@ public class Lot_Manager : MonoBehaviour
 
                     for (int i = 0; i < Player.GetComponentInChildren<Inventory>().InventoryItems.Count; i++)
                     {
-                        if (Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && itemForGrowth.currentAmountOfSeeds < itemForGrowth.seedsNeeded)
+                        if (Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded)
                         {
                             currentSeeds = Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>();
                             InventoryItem = Player.GetComponentInChildren<Inventory>().InventoryItems[i].gameObject;
+
+                            if(typeFlower == TypeFlowers.None)
+                            {
+                                switch (currentSeeds.flowerSeed)
+                                {
+                                    case Seeds.FlowerSeeds.Rose:
+                                        typeFlower = TypeFlowers.Rose;
+                                        itemForGrowth = roseItemForGrowth;
+                                        break;
+                                    case Seeds.FlowerSeeds.Lily:
+                                        typeFlower = TypeFlowers.Lily;
+                                        itemForGrowth = lilyItemForGrowth;
+                                        break;
+                                    case Seeds.FlowerSeeds.Lavender:
+                                        typeFlower = TypeFlowers.Laveneder;
+                                        itemForGrowth = lavenderItemForGrowth;
+                                        break;
+                                    case Seeds.FlowerSeeds.Sunflower:
+                                        typeFlower = TypeFlowers.Sunflower;
+                                        itemForGrowth = sunflowerItemForGrowth;
+                                        break;
+                                }
+                            }
+                            
 
                             if (currentSeeds.flowerSeed.GetType().GetEnumName(currentSeeds.flowerSeed) == typeFlower.GetType().GetEnumName(typeFlower))
                             {
@@ -152,9 +198,30 @@ public class Lot_Manager : MonoBehaviour
                             }
                             if(InventoryItem.transform.position == gameObject.transform.position)
                             {
-                                itemForGrowth.currentAmountOfSeeds += 1;
-                                itemForGrowth.CurrentAmountOfItems();
-                                Debug.Log(itemForGrowth.currentAmountOfSeeds);
+                                currentAmountOfSeeds += 1;
+                                CurrentAmountOfItems();
+                                Debug.Log(currentAmountOfSeeds);
+                                Destroy(InventoryItem);
+                            }
+                        }
+
+                        if(Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded)
+                        {
+                            InventoryItem = Player.GetComponentInChildren<Inventory>().InventoryItems[i].gameObject;
+
+                                InventoryItem.transform.parent = null;
+                                while (InventoryItem.transform.position != gameObject.transform.position)
+                                {
+                                    InventoryItem.transform.position = new Vector3(Mathf.MoveTowards(InventoryItem.transform.position.x, gameObject.transform.position.x, Time.deltaTime * 5), Mathf.MoveTowards(InventoryItem.transform.position.y, gameObject.transform.position.y, Time.deltaTime * 5), Mathf.MoveTowards(InventoryItem.transform.position.z, gameObject.transform.position.z, Time.deltaTime * 5));
+                                    yield return new WaitForEndOfFrame();
+                                }
+                                Player.GetComponentInChildren<Inventory>().InventoryItems.Remove(InventoryItem);
+                            
+                            if (InventoryItem.transform.position == gameObject.transform.position)
+                            {
+                                currentAmountOfWater += 1;
+                                CurrentAmountOfItems();
+                                Debug.Log(currentAmountOfWater);
                                 Destroy(InventoryItem);
                             }
                         }
@@ -196,6 +263,12 @@ public class Lot_Manager : MonoBehaviour
 
         //}
 
+    }
+
+
+    public void CurrentAmountOfItems()
+    {
+        currentAmountOfAllItems = currentAmountOfSeeds + currentAmountOfWater + currentAmountOfSoil;
     }
 
 }
