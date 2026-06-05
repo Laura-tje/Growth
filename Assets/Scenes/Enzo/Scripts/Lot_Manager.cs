@@ -134,7 +134,7 @@ public class Lot_Manager : MonoBehaviour
 
                     for (int i = 0; i < Player.GetComponentInChildren<Inventory>().InventoryItems.Count; i++)
                     {
-                        if (Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null)
+                        if (Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && itemForGrowth.currentAmountOfSeeds < itemForGrowth.seedsNeeded)
                         {
                             currentSeeds = Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>();
                             InventoryItem = Player.GetComponentInChildren<Inventory>().InventoryItems[i].gameObject;
@@ -152,6 +152,9 @@ public class Lot_Manager : MonoBehaviour
                             }
                             if(InventoryItem.transform.position == gameObject.transform.position)
                             {
+                                itemForGrowth.currentAmountOfSeeds += 1;
+                                itemForGrowth.CurrentAmountOfItems();
+                                Debug.Log(itemForGrowth.currentAmountOfSeeds);
                                 Destroy(InventoryItem);
                             }
                         }

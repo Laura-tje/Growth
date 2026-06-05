@@ -15,8 +15,8 @@ MonoBehaviour:
   seedsNeeded: 2
   waterNeeded: 4
   soilNeeded: 4
-  allItemsNeeded: 0
+  allItemsNeeded: 10
   currentAmountOfSeeds: 0
   currentAmountOfWater: 0
   currentAmountOfSoil: 0
-  currentAmountOfAllItems: 0
+  currentAmountOfAllItems: 10
