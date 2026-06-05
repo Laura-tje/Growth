@@ -686,6 +686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 5084336019782640524, guid: 5638d6ce806b16343a83758d1f8e4bee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5918030045247784662, guid: 5638d6ce806b16343a83758d1f8e4bee, type: 3}
       propertyPath: m_Name
       value: River
@@ -2976,26 +2980,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630447258}
   m_CullTransparentMesh: 1
---- !u!1 &1658504309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 72273855765355402, guid: 0aafa8cd621b978488601279564e533f, type: 3}
-  m_PrefabInstance: {fileID: 4401896907598022638}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1658504317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658504309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 2024480987108015088, guid: 3678dd7b70de0ef4fa09cee09dd83cec, type: 3}
-  obtainablItems: 2
-  cropSeed: 0
 --- !u!1 &1705714977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,13 +3461,9 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 2131845296}
-    - target: {fileID: 2093044431363822748, guid: 0aafa8cd621b978488601279564e533f, type: 3}
-      propertyPath: StartTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 6.653
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3491,23 +3471,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 3.428
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9238797
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.38268322
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3515,7 +3495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3524,10 +3504,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 72273855765355402, guid: 0aafa8cd621b978488601279564e533f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1658504317}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aafa8cd621b978488601279564e533f, type: 3}
 --- !u!1001 &6007474656123572553
 PrefabInstance:
