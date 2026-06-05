@@ -1,5 +1,7 @@
-using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Lot_Manager : MonoBehaviour
 {
@@ -51,14 +53,14 @@ public class Lot_Manager : MonoBehaviour
         else if ( _Plant != null)
         {
 
-            if ( _Plant.transform.GetChild(0).gameObject.name == "Plant_Type_1")
-            {
+            //if ( _Plant.transform.GetChild(0).gameObject.name == "Plant_Type_1")
+            //{
 
-                //_Plant_Growth_Plan_1();
+            //    //_Plant_Growth_Plan_1();
 
+
+            //}
                 Debug.Log("Plant type 1 growth plan assigned to lot");
-
-            }
 
         }
 
@@ -77,13 +79,10 @@ public class Lot_Manager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if ( other.gameObject == _Player && _Plant_Still_Growing && !_Transfering)
+        if ( other.gameObject.tag == "Player" && _Plant_Still_Growing && !_Transfering)
         {
-
-            Debug.Log("Player in lot");
-
-            StartCoroutine(_Transfer_Mats(other));
-
+            StartCoroutine(_Transfer_Mats(other.gameObject));
+            _Transfering = true;
         }
 
     }
@@ -91,26 +90,20 @@ public class Lot_Manager : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
-        if ( other.gameObject == _Player && _Plant_Still_Growing && _Transfering)
+        if ( other.gameObject.tag == "Player" && _Plant_Still_Growing && _Transfering)
         {
-            StopCoroutine(_Transfer_Mats(other));
-
+            Debug.Log("works");
             _Transfering = false;
-
         }
 
     }
 
-    private IEnumerator _Transfer_Mats(Collider other)
+    private IEnumerator _Transfer_Mats(GameObject Player)
     {
 
-        Debug.Log("Attempting to transfer mats");
+        //Player_Growth_Corrosponding_Script player_Script = _Player.GetComponent<Player_Growth_Corrosponding_Script>();
 
-        _Transfering = true;
-
-        Player_Growth_Corrosponding_Script player_Script = _Player.GetComponent<Player_Growth_Corrosponding_Script>();
-
-        if ( other != null && player_Script._Player_Mats_Owned > 0)
+        if ( Player != null && Player.GetComponentInChildren<Inventory>().InventoryItems.Count > 0)
         {
 
             if (itemForGrowth.currentAmountOfAllItems == itemForGrowth.allItemsNeeded)
@@ -119,6 +112,10 @@ public class Lot_Manager : MonoBehaviour
                 yield return null;
 
                 _Transfering = false;
+
+                _Plant_Still_Growing = false;
+
+                _Plant_Done_Growing = true;
 
                 Debug.Log("Transfering mats stopped");
 
@@ -133,14 +130,32 @@ public class Lot_Manager : MonoBehaviour
                     yield return new WaitForSeconds(0.1f);
 
                     Seeds currentSeeds;
-                    for (int i = 0; i < other.GetComponentInChildren<Inventory>().InventoryItems.Count; i++)
+                    GameObject InventoryItem;
+
+                    for (int i = 0; i < Player.GetComponentInChildren<Inventory>().InventoryItems.Count; i++)
                     {
-                        if (other.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null)
+                        if (Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && itemForGrowth.currentAmountOfSeeds < itemForGrowth.seedsNeeded)
                         {
-                            currentSeeds = other.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>();
+                            currentSeeds = Player.GetComponentInChildren<Inventory>().InventoryItems[i].GetComponent<Seeds>();
+                            InventoryItem = Player.GetComponentInChildren<Inventory>().InventoryItems[i].gameObject;
+
                             if (currentSeeds.flowerSeed.GetType().GetEnumName(currentSeeds.flowerSeed) == typeFlower.GetType().GetEnumName(typeFlower))
                             {
-
+                                InventoryItem.transform.parent = null;
+                                while(InventoryItem.transform.position != gameObject.transform.position)
+                                {
+                                    InventoryItem.transform.position = new Vector3(Mathf.MoveTowards(InventoryItem.transform.position.x, gameObject.transform.position.x, Time.deltaTime * 5), Mathf.MoveTowards(InventoryItem.transform.position.y, gameObject.transform.position.y, Time.deltaTime * 5), Mathf.MoveTowards(InventoryItem.transform.position.z, gameObject.transform.position.z, Time.deltaTime * 5));
+                                    yield return new WaitForEndOfFrame();
+                                }
+                                Player.GetComponentInChildren<Inventory>().InventoryItems.Remove(InventoryItem);
+                                Player.GetComponentInChildren<Inventory>().seeds.Remove(InventoryItem);
+                            }
+                            if(InventoryItem.transform.position == gameObject.transform.position)
+                            {
+                                itemForGrowth.currentAmountOfSeeds += 1;
+                                itemForGrowth.CurrentAmountOfItems();
+                                Debug.Log(itemForGrowth.currentAmountOfSeeds);
+                                Destroy(InventoryItem);
                             }
                         }
                     }
@@ -149,6 +164,16 @@ public class Lot_Manager : MonoBehaviour
 
                     _Transfering = true;
 
+                    _Plant_Still_Growing = true;
+
+                    _Plant_Done_Growing = false;
+
+                    _Transfering = false;
+
+                    if (_Transfering == false)
+                    {
+                        break;
+                    }
                 }
 
             }
@@ -160,16 +185,16 @@ public class Lot_Manager : MonoBehaviour
     private void Update()
     {
 
-        if (itemForGrowth.currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
-        {
+        //if (itemForGrowth.currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
+        //{
 
-            _Plant_Still_Growing = false;
+        //    //_Plant_Still_Growing = false;
 
-            _Plant_Done_Growing = true;
+        //    //_Plant_Done_Growing = true;
 
-            Debug.Log("Plant done growing");
+        //    //Debug.Log("Plant done growing");
 
-        }
+        //}
 
     }
 

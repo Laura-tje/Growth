@@ -4,7 +4,7 @@ public class ItemList : MonoBehaviour
 {
     public GameObject Item;
 
-    public enum ObtainablItems
+    public enum ObtainablItems 
     {
         Seed,
         Water,
@@ -30,5 +30,13 @@ public class ItemList : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+        }
     }
 }

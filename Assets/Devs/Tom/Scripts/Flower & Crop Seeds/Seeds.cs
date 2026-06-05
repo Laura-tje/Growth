@@ -16,10 +16,6 @@ public class Seeds : MonoBehaviour
     {
 
     }
-    [SerializeField] private CropSeeds cropSeed;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -35,4 +31,5 @@ public class Seeds : MonoBehaviour
     {
         Debug.Log("Work");
     }
+
 }
