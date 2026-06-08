@@ -13,6 +13,21 @@ public class WaterWell : MonoBehaviour
     private float PassedTime;
     private GameObject Player;
     [SerializeField] private GameObject WaterPrefab;
+    
+    [SerializeField] private GameObject can;
+    [SerializeField] private GameObject hose;
+    [SerializeField] private GameObject well;
+
+    public enum WaterState
+    {
+        Empty,
+        Can,
+        Hose,
+        Well,
+    }
+    
+    public WaterState currentState;
+
     void Start()
     {
         Level = 0;
@@ -24,6 +39,8 @@ public class WaterWell : MonoBehaviour
         GenerateWater();
         
         textAmountWater.text = GeneratedWater.ToString();
+
+        SetModelsActive();
     }
 
     //player getting water
@@ -41,17 +58,36 @@ public class WaterWell : MonoBehaviour
 
     public void UpdateWell() //called in waterupdater
     {
-        Level++;
-        Debug.Log(Level);
+        switch (currentState)
+        {
+            case WaterState.Empty:
+                currentState = WaterState.Can;
+                break;
+            case WaterState.Can:
+                currentState = WaterState.Hose;
+                break;
+            case WaterState.Hose:
+                currentState = WaterState.Well;
+                break;
+            case WaterState.Well:
+                break;
+        }
+    }
+
+    private void SetModelsActive()
+    {
+        can.SetActive(currentState == WaterState.Can);
+        hose.SetActive(currentState == WaterState.Hose);
+        well.SetActive(currentState == WaterState.Well);
     }
 
     public void GenerateWater() 
     {
-        if (GeneratedWater >= 1f) return; // Al vol, niks doen
+        if (GeneratedWater >= 1f || currentState == WaterState.Empty) return; // Emtpy or full, do nothing
 
         PassedTime += Time.deltaTime;
 
-        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Nooit negatief of 0
+        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Never negative
     
         if (PassedTime >= timeNeeded)
         {
