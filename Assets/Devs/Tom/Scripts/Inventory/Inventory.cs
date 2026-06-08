@@ -63,4 +63,20 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+    public void ResetItemPlacement()
+    {
+        for (int i = 0; i < InventoryItems.Count; i++)
+        {
+            for (int j = 0; j < InventorySlots.Count; j++)
+            {
+                InventoryItems[i].gameObject.transform.position = InventorySlots[i].gameObject.transform.position;
+            }
+        }
+
+        for (int i = 0; i < InventoryItems.Count; i++)
+        {
+            InventoryItems[i].transform.parent = InventorySlots[i].gameObject.transform;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &711909753205647225
+--- !u!1 &8602545423476645250
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6112366391706571187}
-  - component: {fileID: 4243658335146927695}
-  - component: {fileID: 5905473599712599607}
-  - component: {fileID: 6029578764629341524}
-  - component: {fileID: 3330594063644128520}
-  m_Layer: 6
-  m_Name: LilySeed
-  m_TagString: Items
+  - component: {fileID: 8380927117602118921}
+  - component: {fileID: 5877535438354609194}
+  - component: {fileID: 4170345529605582217}
+  - component: {fileID: 3644801939974030929}
+  - component: {fileID: 1535280668629857703}
+  m_Layer: 0
+  m_Name: Growing Plant
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6112366391706571187
+--- !u!4 &8380927117602118921
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711909753205647225}
+  m_GameObject: {fileID: 8602545423476645250}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0.59, y: 0.5, z: 6.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4243658335146927695
+--- !u!33 &5877535438354609194
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711909753205647225}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5905473599712599607
+  m_GameObject: {fileID: 8602545423476645250}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4170345529605582217
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711909753205647225}
+  m_GameObject: {fileID: 8602545423476645250}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53903bd7b2dd9cf48922f8f0c72aeefb, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,13 +88,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6029578764629341524
-SphereCollider:
+--- !u!65 &3644801939974030929
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711909753205647225}
+  m_GameObject: {fileID: 8602545423476645250}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,18 +107,33 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3330594063644128520
+--- !u!114 &1535280668629857703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711909753205647225}
+  m_GameObject: {fileID: 8602545423476645250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
+  m_Script: {fileID: 11500000, guid: 114fdd2ae611248f4933b4cc3c4a280a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 1
+  _Plant: {fileID: 8602545423476645250}
+  _Player: {fileID: 0}
+  _Plant_Still_Growing: 0
+  _Plant_Done_Growing: 0
+  _Transfering: 0
+  roseItemForGrowth: {fileID: 11400000, guid: 96626aca813516f4e96eaa8fc739e950, type: 2}
+  lilyItemForGrowth: {fileID: 11400000, guid: 413fdcf10e8b81b41b028e0a6eb1504f, type: 2}
+  lavenderItemForGrowth: {fileID: 11400000, guid: 0f35bb4e89ebf194298b05265c9664d9, type: 2}
+  sunflowerItemForGrowth: {fileID: 11400000, guid: 1fcb899eec06cb14e8b52b08102acc38, type: 2}
+  GrowthRanks: 210000004200000063000000
+  currentAmountOfSeeds: 0
+  currentAmountOfWater: 0
+  currentAmountOfSoil: 0
+  currentAmountOfAllItems: 0
+  currentAmountOfAllItemsPercentage: 0
+  typeFlower: 0

@@ -32,4 +32,12 @@ public class Seeds : MonoBehaviour
         Debug.Log("Work");
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+        }
+    }
 }
