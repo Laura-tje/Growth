@@ -4,7 +4,7 @@ public class ItemList : MonoBehaviour
 {
     public GameObject Item;
 
-    public enum ObtainablItems
+    public enum ObtainablItems 
     {
         Seed,
         Water,
@@ -31,4 +31,5 @@ public class ItemList : MonoBehaviour
     {
         
     }
+    
 }
