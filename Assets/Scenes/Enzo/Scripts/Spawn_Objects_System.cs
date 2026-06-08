@@ -75,6 +75,8 @@ public class Spawn_Objects_System : MonoBehaviour
         _Spawn_Locations = GameObject.FindGameObjectsWithTag("Spawn_Location");
 
         StartCoroutine(Spawn_Objects());
+
+        Debug.Log("Started spawning objects");
     }
 
     private IEnumerator Spawn_Objects()

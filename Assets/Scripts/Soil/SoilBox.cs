@@ -11,7 +11,18 @@ public class SoilBox : MonoBehaviour
     [SerializeField] private float StartTime;
     private float PassedTime;
     private GameObject Player;
-    //[SerializeField] private GameObject SoilPrefab;
+    [SerializeField] private GameObject SoilPrefab;
+
+    [SerializeField] private GameObject hive;
+
+    public enum SoilState
+    {
+        Empty,
+        Hive,
+    }
+
+    public SoilState currentState;
+    
     void Start()
     {
         Level = 0;
@@ -20,9 +31,11 @@ public class SoilBox : MonoBehaviour
 
     void Update()
     {
-        GenerateWater();
+        GenerateSoil();
         
         textAmountSoil.text = GeneratedSoil.ToString();
+
+        SetModelsActive();
     }
 
     //player getting water
@@ -30,7 +43,7 @@ public class SoilBox : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && math.round(GeneratedSoil) > 0)
         {
-            Debug.Log("Player was thirsty and got some water");
+            Debug.Log("Player was hungry and got some soil");
             float number = GeneratedSoil;
             Inventory.AddObjectToInventory(gameObject);
             GeneratedSoil -= number;
@@ -38,19 +51,31 @@ public class SoilBox : MonoBehaviour
         };
     }
 
-    public void UpdateWell() //called in waterupdater
+    public void UpdateSoil()
     {
-        Level++;
-        Debug.Log(Level);
+        switch (currentState)
+        {
+            case SoilState.Empty:
+                currentState =  SoilState.Hive;
+                break;
+            case SoilState.Hive:
+                break;
+                
+        }
     }
 
-    public void GenerateWater() 
+    private void SetModelsActive()
     {
-        if (GeneratedSoil >= 1f) return; // Al vol, niks doen
+        hive.SetActive(currentState == SoilState.Hive);
+    }
+
+    public void GenerateSoil() 
+    {
+        if (GeneratedSoil >= 1f || currentState == SoilState.Empty) return; // Emtpy or full, do nothing
 
         PassedTime += Time.deltaTime;
 
-        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Nooit negatief of 0
+        float timeNeeded = Mathf.Max(0.1f, StartTime - Level); // Never negative
     
         if (PassedTime >= timeNeeded)
         {

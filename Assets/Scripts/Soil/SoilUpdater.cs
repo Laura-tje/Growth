@@ -46,7 +46,7 @@ public class SoilUpdater : MonoBehaviour
 
             if ( /*inventoryScript.amountofcrops >= neededAmount*/ true) //FIX THISSSSS WHEN TOM MAKES IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             {
-                Soil.UpdateWell();
+                Soil.UpdateSoil();
                 //inventory -= neededamount
                 Debug.Log("The player successfully updated the soil well to convenience himself. How selfish...");
             } else if ( /*inventoryScript.amountofcrops < neededAmount*/ false) //FIX THISSSS AS WELLLLLLLLLLL (SoilBox)!!!!!!!!!!!!!!!!!!!!!!
