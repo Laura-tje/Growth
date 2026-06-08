@@ -15,11 +15,7 @@ public class RotateToCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(cam.transform);
-        gameObject.transform.rotation = Quaternion.Euler(
-            gameObject.transform.eulerAngles.x,
-            180,
-            gameObject.transform.eulerAngles.z
-        );
+        transform.LookAt(cam.transform);
+        transform.Rotate(0, 180, 0);
     }
 }

@@ -9,7 +9,7 @@ public class River : MonoBehaviour
     [SerializeField] private float TimeNeeded;
     [SerializeField] private TextMeshProUGUI textAmountWater;
     
-    public Inventory Inventory;
+    private Inventory Inventory;
     private GameObject player;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,12 +39,11 @@ public class River : MonoBehaviour
     
     private void OnTriggerStay(Collider other) 
     {
-        if (other.gameObject.name == "Player" && math.round(GeneratedWater) > 0)
+        if (other.gameObject.name == "Player" && GeneratedWater >= 1f)
         {
             Debug.Log("Player was thirsty and got some water");
-            float number = GeneratedWater;
             Inventory.AddObjectToInventory(gameObject);
-            GeneratedWater -= number;
+            GeneratedWater = 0f;
             PassedTime = 0f;
         };
     }
