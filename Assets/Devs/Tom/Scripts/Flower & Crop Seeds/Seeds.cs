@@ -6,7 +6,7 @@ public class Seeds : MonoBehaviour
     {
         Rose, 
         Lily,
-        Laveneder,
+        Lavender,
         Sunflower
     }
 
