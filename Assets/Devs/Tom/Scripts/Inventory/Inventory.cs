@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour
 
     private GameObject currentHarvestedItem;
 
+    private int ChosenItem;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +38,9 @@ public class Inventory : MonoBehaviour
     {
         if(InventoryItems.Count < InventorySlots.Count)
         {
-            InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform));
+            ChosenItem = Random.Range(0, currentObtainableItemInRange.GetComponent<ItemList>().Item.Count);
+
+            InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item[ChosenItem], gameObject.transform.position, gameObject.transform.rotation, gameObject.transform));
 
             if (currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
             {

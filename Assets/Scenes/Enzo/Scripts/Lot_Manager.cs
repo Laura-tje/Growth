@@ -52,7 +52,6 @@ public class Lot_Manager : MonoBehaviour
 
     private void Start()
     {
-        itemForGrowth.MaxAmountOfItemsNeeded();
         CurrentAmountOfItems();
 
         _Check_Plant();
@@ -168,18 +167,22 @@ public class Lot_Manager : MonoBehaviour
                                     case Seeds.FlowerSeeds.Rose:
                                         typeFlower = TypeFlowers.Rose;
                                         itemForGrowth = roseItemForGrowth;
+                                        itemForGrowth.MaxAmountOfItemsNeeded();
                                         break;
                                     case Seeds.FlowerSeeds.Lily:
                                         typeFlower = TypeFlowers.Lily;
                                         itemForGrowth = lilyItemForGrowth;
+                                        itemForGrowth.MaxAmountOfItemsNeeded();
                                         break;
                                     case Seeds.FlowerSeeds.Lavender:
                                         typeFlower = TypeFlowers.Laveneder;
                                         itemForGrowth = lavenderItemForGrowth;
+                                        itemForGrowth.MaxAmountOfItemsNeeded();
                                         break;
                                     case Seeds.FlowerSeeds.Sunflower:
                                         typeFlower = TypeFlowers.Sunflower;
                                         itemForGrowth = sunflowerItemForGrowth;
+                                        itemForGrowth.MaxAmountOfItemsNeeded();
                                         break;
                                 }
                             }
