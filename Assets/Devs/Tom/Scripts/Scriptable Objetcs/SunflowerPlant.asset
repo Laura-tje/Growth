@@ -16,3 +16,4 @@ MonoBehaviour:
   waterNeeded: 4
   soilNeeded: 4
   allItemsNeeded: 10
+  plantToGrow: {fileID: 7352785610838309532, guid: fa030484ea56eae4ab7254e575f12fe9, type: 3}
