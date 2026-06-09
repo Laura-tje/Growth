@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RotateToCamera : MonoBehaviour
 {
+
+    [SerializeField] private float YWaarde;
     [SerializeField] Camera cam;
     void Start()
     {
@@ -15,7 +17,8 @@ public class RotateToCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(cam.transform);
-        transform.Rotate(0, 180, 0);
+        Vector3 dir = transform.position - cam.transform.position;
+        dir.x = 0; // ignore  angle completely
+        transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
     }
 }
