@@ -9,23 +9,13 @@ public class ItemForGrowth : ScriptableObject
 
     public int soilNeeded;
 
-    public int allItemsNeeded;
+    public float allItemsNeeded;
 
-    public int currentAmountOfSeeds;
-
-    public int currentAmountOfWater;
-
-    public int currentAmountOfSoil;
-
-    public int currentAmountOfAllItems;
+    public GameObject plantToGrow; 
 
     public void MaxAmountOfItemsNeeded()
     {
         allItemsNeeded = seedsNeeded + waterNeeded + soilNeeded;
     }
 
-    public void CurrentAmountOfItems()
-    {
-        currentAmountOfAllItems = currentAmountOfSeeds + currentAmountOfWater + currentAmountOfSoil;
-    }
 }

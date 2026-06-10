@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class ItemList : MonoBehaviour
 {
-    public GameObject Item;
+    public List<GameObject> Item;
 
     public enum ObtainablItems 
     {
@@ -15,7 +17,7 @@ public class ItemList : MonoBehaviour
 
     private enum CropSeeds
     {
-
+        
     }
     [SerializeField] private CropSeeds cropSeed;
 
@@ -31,12 +33,5 @@ public class ItemList : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
-        }
-    }
+    
 }

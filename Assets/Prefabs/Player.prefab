@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSystem: {fileID: 7050531158390729797}
+  _playerChild: {fileID: 0}
   M_Speed: 5
   Inventory: {fileID: 2250530851360192479}
 --- !u!1 &2250530851360192479
@@ -587,6 +588,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4328779936079807229, guid: 36e4dc9bb8cd6194dbbda0e541d86dd3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 876fc98a877362d4eaef9d9bcc25935b, type: 2}
     - target: {fileID: 7925877875547514701, guid: 36e4dc9bb8cd6194dbbda0e541d86dd3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
