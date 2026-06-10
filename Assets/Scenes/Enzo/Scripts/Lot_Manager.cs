@@ -156,8 +156,6 @@ public class Lot_Manager : MonoBehaviour
                 Seeds currentSeeds;
                 GameObject InventoryItem;
 
-                Debug.Log("OH NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO I FUCKED UP");
-
                 for (int i = 0; i < inventory.InventoryItems.Count; i++)
                 {
                     if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded)

@@ -176,6 +176,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9218138794394620293, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
+      propertyPath: lockX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218138794394620293, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
+      propertyPath: lockY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218138794394620293, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
+      propertyPath: lockZ
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218138794394620293, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
+      propertyPath: billboardType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -528,6 +544,10 @@ PrefabInstance:
     - target: {fileID: 2327028349387451978, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
       propertyPath: m_Name
       value: Flower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634029866357177752, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5036751952075180402, guid: 0f0a8018e3ccc47439780a109fcaf1fb, type: 3}
       propertyPath: m_LocalPosition.x
