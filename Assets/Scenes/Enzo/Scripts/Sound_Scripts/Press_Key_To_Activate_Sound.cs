@@ -21,8 +21,7 @@ public class Press_Key_To_Activate_Sound : MonoBehaviour
         if ( Input.GetKeyDown(KeyCode.A))
         {
             
-            _Instance._Audio_Source.PlayOneShot(_Instance._Sound_Clips[(0), _Sound], _Volume);
-
+            Sound_Manage_III._Play_Sound(SoundType.RED);
         }
 
     } 
