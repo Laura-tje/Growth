@@ -9,7 +9,9 @@ public class ItemForGrowth : ScriptableObject
 
     public int soilNeeded;
 
-    public int allItemsNeeded;
+    public float allItemsNeeded;
+
+    public GameObject plantToGrow; 
 
     public void MaxAmountOfItemsNeeded()
     {

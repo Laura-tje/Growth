@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject BeginScreen;
     [SerializeField] GameObject EndScreen;
     [SerializeField] GameObject PauseButton;
+    [SerializeField] GameObject FadeBackground;
 
     public static UIManager instance;
 
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
     {
         BeginScreen.SetActive(currentState == Menu.StartScreen);
         PauseMenu.SetActive(currentState == Menu.PauseMode);
+        FadeBackground.SetActive(currentState == Menu.PauseMode || currentState == Menu.OptionsMode);
         OptionsMenu.SetActive(currentState == Menu.OptionsMode);
         EndScreen.SetActive(currentState == Menu.EndScreen);
         
