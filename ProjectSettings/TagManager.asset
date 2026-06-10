@@ -8,6 +8,8 @@ TagManager:
   - Spawn_Location
   - Undefined
   - Harvestable Object
+  - Items
+  - Crop
   layers:
   - Default
   - TransparentFX

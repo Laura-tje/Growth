@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: strawberry
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51140f9a8e482fa4ba4f42767e658b1c, type: 3}
+      propertyPath: m_TagString
+      value: Crop
+      objectReference: {fileID: 0}
     - target: {fileID: 6722800253898608971, guid: 51140f9a8e482fa4ba4f42767e658b1c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
