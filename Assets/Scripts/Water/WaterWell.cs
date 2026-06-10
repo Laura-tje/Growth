@@ -13,6 +13,7 @@ public class WaterWell : MonoBehaviour
     private float PassedTime;
     private GameObject Player;
     [SerializeField] private GameObject WaterPrefab;
+    [SerializeField] WaterUpdater updaterScript;
     
     [SerializeField] private GameObject can;
     [SerializeField] private GameObject hose;
@@ -62,12 +63,15 @@ public class WaterWell : MonoBehaviour
         {
             case WaterState.Empty:
                 currentState = WaterState.Can;
+                updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Can:
                 currentState = WaterState.Hose;
+                updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Hose:
                 currentState = WaterState.Well;
+                updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Well:
                 break;
