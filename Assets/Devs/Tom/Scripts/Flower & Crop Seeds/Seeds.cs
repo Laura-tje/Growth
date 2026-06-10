@@ -1,25 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class Seeds : MonoBehaviour
-{
-    public enum FlowerSeeds
-    {
-        Rose, 
-        Lily,
-        Laveneder,
-        Sunflower
-    }
+{ 
+    [SerializeField] public Lot_Manager.TypeFlowers flowerSeed;
 
-    [SerializeField] public FlowerSeeds flowerSeed; 
+    [SerializeField] private int hitLives;
+
 
     private enum CropSeeds
     {
 
     }
-    [SerializeField] private CropSeeds cropSeed;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -34,5 +26,36 @@ public class Seeds : MonoBehaviour
     public virtual void Test()
     {
         Debug.Log("Work");
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+            StartCoroutine(WhackSeeds());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+            StopCoroutine(WhackSeeds());
+        }
+    }
+
+    private IEnumerator WhackSeeds()
+    {
+        while(hitLives > 0)
+        {
+            hitLives -= 1;
+            yield return new WaitForSeconds(1f);
+        }
+        Debug.Log("Dies");
+       
+        yield return null;
     }
 }

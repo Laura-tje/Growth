@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: watermelon_updated
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76595e51da7edcc4ea8999b09840e603, type: 3}
+      propertyPath: m_TagString
+      value: Crop
+      objectReference: {fileID: 0}
     - target: {fileID: 1553919574063404241, guid: 76595e51da7edcc4ea8999b09840e603, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
