@@ -689,7 +689,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -954,6 +954,7 @@ MonoBehaviour:
   BeginScreen: {fileID: 828992472}
   EndScreen: {fileID: 1807156544}
   PauseButton: {fileID: 687729106}
+  FadeBackground: {fileID: 0}
 --- !u!114 &536395675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,6 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cd601703903a447b3d95addefaa3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  YWaarde: 0
   cam: {fileID: 2141978258}
 --- !u!114 &582718235
 MonoBehaviour:

@@ -15,7 +15,7 @@ public class Sound_Manage_III : MonoBehaviour
 {
 
     public Sound_Clips[] _Sound_Clips;
-    private static Sound_Manage_III _Instance;
+    public static Sound_Manage_III _Instance;
     private AudioSource _Audio_Source;
 
     private void Awake()
