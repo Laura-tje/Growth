@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControlls : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Player Controlls")]
     [SerializeField] private PlayerInput inputSystem;
@@ -28,12 +28,6 @@ public class PlayerControlls : MonoBehaviour
         move = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +37,7 @@ public class PlayerControlls : MonoBehaviour
 
            if (move != Vector3.zero)
            {
-               Quaternion targetRotation = Quaternion.LookRotation(-move);
+               Quaternion targetRotation = Quaternion.LookRotation(move);
                _playerChild.transform.rotation = Quaternion.RotateTowards(_playerChild.transform.rotation, targetRotation, 500f * Time.deltaTime);
 
                 //Enzo here, this is the line I added
