@@ -102,7 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
+  Item:
+  - {fileID: 0}
+  - {fileID: 0}
   obtainablItems: 0
   cropSeed: 0
 --- !u!114 &5192980307374472558

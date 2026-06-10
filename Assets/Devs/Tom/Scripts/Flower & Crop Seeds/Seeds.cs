@@ -1,16 +1,9 @@
 using UnityEngine;
 
 public class Seeds : MonoBehaviour
-{
-    public enum FlowerSeeds
-    {
-        Rose, 
-        Lily,
-        Lavender,
-        Sunflower
-    }
+{ 
 
-    [SerializeField] public FlowerSeeds flowerSeed; 
+    [SerializeField] public Lot_Manager.TypeFlowers flowerSeed; 
 
     private enum CropSeeds
     {
@@ -32,4 +25,12 @@ public class Seeds : MonoBehaviour
         Debug.Log("Work");
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+        }
+    }
 }

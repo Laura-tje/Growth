@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 1701485187793743236}
   - component: {fileID: 361289629477191435}
   - component: {fileID: 5108770573179689021}
-  - component: {fileID: 5192980307374472558}
   - component: {fileID: 1438636524214871713}
+  - component: {fileID: 3982080736887801657}
+  - component: {fileID: 855019452471242428}
   m_Layer: 0
-  m_Name: Lily Flower
+  m_Name: Flower
   m_TagString: Harvestable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,22 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 711909753205647225, guid: a3efec4404a827846b4dc5b553d7a41d, type: 3}
+  Item:
+  - {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
+  - {fileID: 711909753205647225, guid: b1993c5617acf87409992044d452d141, type: 3}
+  - {fileID: 711909753205647225, guid: a3efec4404a827846b4dc5b553d7a41d, type: 3}
+  - {fileID: 711909753205647225, guid: 8104573a647108a4e82fc8f9209c17f2, type: 3}
   obtainablItems: 0
   cropSeed: 0
---- !u!114 &5192980307374472558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2327028349387451978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b6611e2bae1a741a56075f81f22318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowerSeed: 1
 --- !u!135 &1438636524214871713
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -138,3 +130,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0.0266456, y: 0.043523934, z: 0.32089236}
+--- !u!135 &3982080736887801657
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327028349387451978}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0.0266456, y: 0.043523934, z: 0.32089236}
+--- !u!114 &855019452471242428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327028349387451978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerSeed: 0
