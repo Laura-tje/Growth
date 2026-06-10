@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: forget me not
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
+      propertyPath: m_TagString
+      value: Flower
+      objectReference: {fileID: 0}
     - target: {fileID: 945454400225530728, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
