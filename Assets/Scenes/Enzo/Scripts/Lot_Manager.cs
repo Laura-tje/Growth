@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Lot_Manager : MonoBehaviour
 {
