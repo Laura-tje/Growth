@@ -10,6 +10,7 @@ TagManager:
   - Harvestable Object
   - Items
   - Crop
+  - Flower
   layers:
   - Default
   - TransparentFX
