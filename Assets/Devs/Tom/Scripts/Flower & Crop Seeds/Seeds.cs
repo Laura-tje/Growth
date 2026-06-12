@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics;
+using System.Reflection;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +23,7 @@ public class Seeds : MonoBehaviour
 
     private Coroutine storedCoroutine;
 
+    private Animator animator;
     private enum CropSeeds
     {
 
@@ -33,7 +36,7 @@ public class Seeds : MonoBehaviour
 
     public virtual void Test()
     {
-        Debug.Log("Work");
+        UnityEngine.Debug.Log("Work");
     }
 
 
@@ -45,9 +48,14 @@ public class Seeds : MonoBehaviour
             colliderTriggered = true;
             if (mainCanvas != null)
             {
-                Debug.Log("Active");
+                UnityEngine.Debug.Log("Active");
                 mainCanvas.gameObject.SetActive(true);
             }
+
+            
+            animator = other.GetComponentInChildren<Animator>();
+            UnityEngine.Debug.Log(animator); 
+            
             storedCoroutine = StartCoroutine(WhackSeeds(other.gameObject));
         }
     }
@@ -67,6 +75,7 @@ public class Seeds : MonoBehaviour
                 HpBar.fillAmount = 1;
                 hitLives = maxHitLives;
             }
+            animator.SetBool("Hoe", false);
         }
     }
 
@@ -79,6 +88,9 @@ public class Seeds : MonoBehaviour
                 hitLives -= 1;
                 hitLivesPercentage = hitLives / maxHitLives * 1f;
                 //HpBar.fillAmount = hitLivesPercentage;
+
+                //Just Enzo adding some lines of code.
+                animator.SetBool("Hoe", true);
 
                 while (HpBar.fillAmount > hitLivesPercentage && colliderTriggered)
                 {
@@ -95,7 +107,7 @@ public class Seeds : MonoBehaviour
 
                 if (hitLives <= 0)
                 {
-                    Debug.Log("Dies");
+                    UnityEngine.Debug.Log("Dies");
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
                     //Destroy(gameObject);
                     yield return null;
