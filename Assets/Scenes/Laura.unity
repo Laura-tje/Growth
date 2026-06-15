@@ -3842,7 +3842,7 @@ PrefabInstance:
       objectReference: {fileID: 56311932}
     - target: {fileID: 3191473770619160664, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: upgradeRequirements.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3191473770619160664, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: 'upgradeRequirements.Array.data[0]'
@@ -3851,6 +3851,14 @@ PrefabInstance:
     - target: {fileID: 3191473770619160664, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: 'upgradeRequirements.Array.data[1]'
       value: 1e+16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097225117935878476, guid: 0aafa8cd621b978488601279564e533f, type: 3}
+      propertyPath: m_fontSize
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097225117935878476, guid: 0aafa8cd621b978488601279564e533f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9082738814194407283, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: Item.Array.size

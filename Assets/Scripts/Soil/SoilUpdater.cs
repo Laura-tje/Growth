@@ -35,6 +35,9 @@ public class SoilUpdater : MonoBehaviour
         
         Soil.Inventory = inventoryScript;
         
+        neededAmount = upgradeRequirements[currentUpgradeIndex];
+        ItemsNeededText.text = neededAmount.ToString();
+        
     }
 
     // Update is called once per frame
@@ -71,6 +74,7 @@ public class SoilUpdater : MonoBehaviour
                 neededAmount = amountOfFlowers;
                 ItemsNeededText.text = neededAmount.ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                amountOfFlowers = 0;
                 Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");
 
             }
