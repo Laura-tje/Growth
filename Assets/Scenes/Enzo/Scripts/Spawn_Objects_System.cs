@@ -103,25 +103,28 @@ public class Spawn_Objects_System : MonoBehaviour
             foreach (GameObject spawn_Location in _Spawn_Locations)
             {
                 // If object already exists at spawn point
-                if (spawn_Location.transform.childCount > 0)
+                if (spawn_Location.transform.childCount <= 0)
                 {
-                    if(spawn_Location.transform.GetChild(0).gameObject != null)
-                    {
-                        GameObject destroy_Object = spawn_Location.transform.GetChild(0).gameObject;
-                        Destroy(destroy_Object);
-                    }
+                    //if(spawn_Location.transform.GetChild(0).gameObject == null)
+                    //{
+                    //    GameObject destroy_Object = spawn_Location.transform.GetChild(0).gameObject;
+                    //    Destroy(destroy_Object);     
+                    //}
+
+                    // Spawn new object
+
+                    int random_Object_Index =
+                        Random.Range(0, _Objects_To_Spawn.Length);
+
+                    Instantiate(
+                        _Objects_To_Spawn[random_Object_Index],
+                        spawn_Location.transform.position,
+                        _Objects_To_Spawn[random_Object_Index].gameObject.transform.rotation,
+                        spawn_Location.transform
+                    );
+
                 }
 
-                // Spawn new object
-                int random_Object_Index =
-                    Random.Range(0, _Objects_To_Spawn.Length);
-
-                Instantiate(
-                    _Objects_To_Spawn[random_Object_Index],
-                    spawn_Location.transform.position,
-                    _Objects_To_Spawn[random_Object_Index].gameObject.transform.rotation,
-                    spawn_Location.transform
-                );
             }
         }
     }
