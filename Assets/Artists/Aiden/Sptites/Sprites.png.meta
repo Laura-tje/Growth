@@ -100,10 +100,10 @@ TextureImporter:
       name: Sprites_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 424
-        width: 412
-        height: 412
+        x: 71
+        y: 471
+        width: 219
+        height: 347
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,10 +122,10 @@ TextureImporter:
       name: Sprites_1
       rect:
         serializedVersion: 2
-        x: 412
-        y: 424
-        width: 412
-        height: 412
+        x: 415
+        y: 453
+        width: 368
+        height: 278
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: Sprites_2
       rect:
         serializedVersion: 2
-        x: 824
-        y: 424
-        width: 412
-        height: 412
+        x: 864
+        y: 444
+        width: 283
+        height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: Sprites_3
       rect:
         serializedVersion: 2
-        x: 1236
-        y: 424
-        width: 412
-        height: 412
+        x: 1271
+        y: 459
+        width: 297
+        height: 329
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,10 +188,10 @@ TextureImporter:
       name: Sprites_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 12
-        width: 412
-        height: 412
+        x: 78
+        y: 55
+        width: 215
+        height: 322
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: Sprites_5
       rect:
         serializedVersion: 2
-        x: 412
-        y: 12
-        width: 412
-        height: 412
+        x: 458
+        y: 72
+        width: 271
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +232,10 @@ TextureImporter:
       name: Sprites_6
       rect:
         serializedVersion: 2
-        x: 824
-        y: 12
-        width: 412
-        height: 412
+        x: 869
+        y: 59
+        width: 317
+        height: 313
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,10 +254,10 @@ TextureImporter:
       name: Sprites_7
       rect:
         serializedVersion: 2
-        x: 1236
-        y: 12
-        width: 412
-        height: 412
+        x: 1272
+        y: 59
+        width: 353
+        height: 274
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
