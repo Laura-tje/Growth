@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Wateringcanscript : MonoBehaviour
 {
-    public Animator animator;
-    public GameObject wateringCan;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject wateringCan;
     private void Update()
     {
         if (animator.GetBool("Watering") == true)
         {
-            Hoe.SetActive(true);
+            wateringCan.SetActive(true);
         }
         else if (animator.GetBool("Watering") == false)
         {
-            Hoe.SetActive(false);
+            wateringCan.SetActive(false);
         }
     }
 
