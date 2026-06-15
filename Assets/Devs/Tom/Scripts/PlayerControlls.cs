@@ -15,6 +15,8 @@ public class PlayerControlls : MonoBehaviour
 
     [SerializeField] private GameObject Inventory;
 
+    [SerializeField] private Animator animator;
+
     private void Awake()
     {
         _currentMap = inputSystem.currentActionMap;
@@ -41,18 +43,16 @@ public class PlayerControlls : MonoBehaviour
 
            if (move != Vector3.zero)
            {
-               Quaternion targetRotation = Quaternion.LookRotation(move);
+               Quaternion targetRotation = Quaternion.LookRotation(-move);
                _playerChild.transform.rotation = Quaternion.RotateTowards(_playerChild.transform.rotation, targetRotation, 500f * Time.deltaTime);
 
-                //Enzo here, this is the line I added.
-                Animator anim = GetComponent<Animator>();
-                anim.SetBool("Walking", true);
+                //Enzo here, this is the line I added
+                animator.SetBool("Walking", true);
            }
            //Enzo here again, I added this too.
            else
            {
-                Animator anim = GetComponent<Animator>();
-                anim.SetBool("Walking", false);
+                animator.SetBool("Walking", false);
            }
     }
 
