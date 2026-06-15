@@ -5,7 +5,7 @@ public class WaterUpdater : MonoBehaviour
 {
     [SerializeField] WaterWell Well;
 
-    public float neededAmount;
+    private float neededAmount;
     [SerializeField] private float increaseAmount;
 
     private Inventory inventoryScript;
@@ -54,7 +54,6 @@ public class WaterUpdater : MonoBehaviour
         {
             float amountOfCrops = 0;
             Debug.Log("Player stubbed his toe against the water updater");
-            Debug.Log("Give Crop tag to crop prefab");//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
             {
                 if (inventoryScript.InventoryItems[i].CompareTag("Crop"))
@@ -71,7 +70,8 @@ public class WaterUpdater : MonoBehaviour
                 amountOfCrops = 0;
                 ItemsNeededText.text = neededAmount.ToString();
                 Debug.Log("The player successfully updated the water well to convenience himself. How selfish...");
-            } else if ( amountOfCrops < neededAmount)
+            } 
+            else if ( amountOfCrops < neededAmount)
             {
                 neededAmount -= amountOfCrops;
                 ItemsNeededText.text = neededAmount.ToString();

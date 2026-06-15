@@ -12,6 +12,7 @@ public class SoilBox : MonoBehaviour
     private float PassedTime;
     private GameObject Player;
     [SerializeField] private GameObject SoilPrefab;
+    [SerializeField] private SoilUpdater updaterScript;
 
     [SerializeField] private GameObject hive;
 
@@ -57,6 +58,7 @@ public class SoilBox : MonoBehaviour
         {
             case SoilState.Empty:
                 currentState =  SoilState.Hive;
+                updaterScript.UpdateNeededAmount();
                 break;
             case SoilState.Hive:
                 break;

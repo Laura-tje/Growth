@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2cd11c95bad54294943d8a99c4bd1, type: 3}
   m_Name: SunflowerPlant 1
   m_EditorClassIdentifier: 
-  seedsNeeded: 10
+  seedsNeeded: 1
   waterNeeded: 0
   soilNeeded: 0
-  allItemsNeeded: 10
+  allItemsNeeded: 1
   plantToGrow: {fileID: 7352785610838309532, guid: fa030484ea56eae4ab7254e575f12fe9, type: 3}

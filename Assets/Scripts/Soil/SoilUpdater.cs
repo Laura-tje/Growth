@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class SoilUpdater : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class SoilUpdater : MonoBehaviour
 
     private Inventory inventoryScript;
     private GameObject player;
+
+    [SerializeField] private TextMeshProUGUI ItemsNeededText;
+    [SerializeField] private float[] upgradeRequirements = { 20f };
+    private int currentUpgradeIndex = 0;
     
     void Start()
     {
@@ -30,6 +35,9 @@ public class SoilUpdater : MonoBehaviour
         
         Soil.Inventory = inventoryScript;
         
+        neededAmount = upgradeRequirements[currentUpgradeIndex];
+        ItemsNeededText.text = neededAmount.ToString();
+        
     }
 
     // Update is called once per frame
@@ -42,22 +50,50 @@ public class SoilUpdater : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
+            float amountOfFlowers = 0;
             Debug.Log("Player stubbed his toe against the soil updater");
-
-            if ( /*inventoryScript.amountofcrops >= neededAmount*/ true) //FIX THISSSSS WHEN TOM MAKES IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
             {
+                if (inventoryScript.InventoryItems[i].CompareTag("Flower"))
+                {
+                    amountOfFlowers += 1;
+                }
+            }
+            
+            if ( amountOfFlowers >= neededAmount)
+            {
+                neededAmount = 0;
                 Soil.UpdateSoil();
-                //inventory -= neededamount
+                //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                amountOfFlowers = 0;
+                ItemsNeededText.text = neededAmount.ToString();
                 Debug.Log("The player successfully updated the soil well to convenience himself. How selfish...");
-            } else if ( /*inventoryScript.amountofcrops < neededAmount*/ false) //FIX THISSSS AS WELLLLLLLLLLL (SoilBox)!!!!!!!!!!!!!!!!!!!!!!
+            } 
+            else if ( amountOfFlowers < neededAmount)
             {
-                /*let amount = inventoryScript.amountofcrops
-                inventory -= amount
-                neededamount -= amount*/
+                neededAmount = amountOfFlowers;
+                ItemsNeededText.text = neededAmount.ToString();
+                //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                amountOfFlowers = 0;
                 Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");
 
             }
             
+        }
+    }
+
+    public void UpdateNeededAmount()
+    {
+        currentUpgradeIndex++;
+
+        if (currentUpgradeIndex < upgradeRequirements.Length)
+        {
+            neededAmount = upgradeRequirements[currentUpgradeIndex];
+            ItemsNeededText.text = neededAmount.ToString();
+        }
+        else
+        {
+            ItemsNeededText.text = "MAX";
         }
     }
 }

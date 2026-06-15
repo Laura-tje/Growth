@@ -807,7 +807,7 @@ MonoBehaviour:
   textAmountWater: {fileID: 5989605683908613246}
   StartTime: 10
   WaterPrefab: {fileID: 9078705882754325096, guid: db76c3d72dc58a640977037ef33525a3, type: 3}
-  updaterScript: {fileID: 0}
+  updaterScript: {fileID: 8981298850592932269}
   can: {fileID: 9099076289510543339}
   hose: {fileID: 2522579577055424580}
   well: {fileID: 4321663396195110236}
