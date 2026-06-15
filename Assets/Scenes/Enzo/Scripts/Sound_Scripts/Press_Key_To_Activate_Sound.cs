@@ -3,12 +3,10 @@ using UnityEngine;
 public class Press_Key_To_Activate_Sound : MonoBehaviour
 {
 
-    private Sound_Manage_III _Sound_Manager;
-
     [SerializeField] private Animator _Animator;
 
 
-    private void Update()
+    void Update()
     {
 
         if ( Input.GetKeyDown(KeyCode.Space))
@@ -18,6 +16,12 @@ public class Press_Key_To_Activate_Sound : MonoBehaviour
 
             _Animator.SetBool("Jump", true);
 
+        }
+
+        if ( Input.GetKeyDown(KeyCode.A))
+        {
+            
+            Sound_Manage_III._Play_Sound(SoundType.RED);
         }
 
     } 

@@ -10,7 +10,9 @@ public class ItemList : MonoBehaviour
     {
         Seed,
         Water,
-        Soil
+        Soil,
+        Flower,
+        Crops
     }
 
     [SerializeField] public ObtainablItems obtainablItems;
