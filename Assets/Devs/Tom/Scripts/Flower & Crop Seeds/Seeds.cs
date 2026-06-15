@@ -21,10 +21,10 @@ public class Seeds : MonoBehaviour
 
     private Coroutine storedCoroutine;
 
-    private enum CropSeeds
-    {
+    //private enum CropSeeds
+    //{
 
-    }
+    //}
 
     private void Awake()
     {
@@ -95,7 +95,7 @@ public class Seeds : MonoBehaviour
                 if (hitLives <= 0)
                 {
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                     yield return null;
                 }
 
