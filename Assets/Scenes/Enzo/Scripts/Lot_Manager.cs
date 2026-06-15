@@ -213,6 +213,7 @@ public class Lot_Manager : MonoBehaviour
                         }
                         if (InventoryItem.transform.position == gameObject.transform.position)
                         {
+                            //Increase the current amount of seeds the plant has and increase it's size equal to the amount of items currently taken
                             currentAmountOfSeeds += 1;
                             CurrentAmountOfItems();
                             Destroy(InventoryItem);
@@ -251,6 +252,8 @@ public class Lot_Manager : MonoBehaviour
                     }
                 }
 
+
+                //Check if the plant has the max amount of plants
                 if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
                 {
                     _Plant_Still_Growing = false;
@@ -277,12 +280,14 @@ public class Lot_Manager : MonoBehaviour
 
     public virtual void UpgradeObject(GameObject UpgradedObject)
     {
+        //used if the current object getting the items has a upgraded state
         Destroy(gameObject);
         Instantiate(UpgradedObject, transform.position, transform.rotation);
     }
 
     private void ApplySeedFromPlayerInventory(Inventory inventory)
     {
+        //for the first time you plant a seed in the ground for the plant to grow
         Seeds currentSeeds;
         GameObject InventoryItem;
         for (int i = 0; i < inventory.InventoryItems.Count; i++)
@@ -303,6 +308,7 @@ public class Lot_Manager : MonoBehaviour
 
     public void CurrentAmountOfItems()
     {
+        //Get the current amount of items the player has to compare it later to the max amount of items the plant needs
         currentAmountOfAllItems = currentAmountOfSeeds + currentAmountOfWater + currentAmountOfSoil;
 
         if (itemForGrowth != null)
