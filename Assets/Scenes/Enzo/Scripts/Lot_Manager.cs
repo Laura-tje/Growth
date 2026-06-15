@@ -233,7 +233,7 @@ public class Lot_Manager : MonoBehaviour
                     else if (inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded && currentAmountOfSeeds > 0)
                     {
                         InventoryItem = inventory.InventoryItems[i].gameObject;
-
+                        animator.SetBool("Watering", true);
                         InventoryItem.transform.parent = null;
                         inventory.InventoryItems.Remove(InventoryItem);
                         inventory.ResetItemPlacement();

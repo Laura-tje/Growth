@@ -8,4 +8,9 @@ public class Startanimationfromanimator : MonoBehaviour
     {
         animation.SetBool("Celebrate", false);
     }
+
+    private void ChangeBoolII()
+    {
+        animation.SetBool("Watering", false);
+    }
 }
