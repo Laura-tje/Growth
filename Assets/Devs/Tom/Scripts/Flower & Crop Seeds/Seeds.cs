@@ -39,7 +39,7 @@ public class Seeds : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.GetComponentInChildren<Inventory>().InventoryItems.Count < other.GetComponentInChildren<Inventory>().InventorySlots.Count)
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = true;
@@ -49,10 +49,10 @@ public class Seeds : MonoBehaviour
                 mainCanvas.gameObject.SetActive(true);
             }
 
-            
+
             animator = other.GetComponentInChildren<Animator>();
-            Debug.Log(animator); 
-            
+            Debug.Log(animator);
+
             storedCoroutine = StartCoroutine(WhackSeeds(other.gameObject));
         }
     }
@@ -63,7 +63,7 @@ public class Seeds : MonoBehaviour
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = false;
-            
+
             StopCoroutine(storedCoroutine);
 
             if (mainCanvas != null)
@@ -113,10 +113,10 @@ public class Seeds : MonoBehaviour
                 yield return new WaitForSeconds(1f);
 
             }
-                if (!colliderTriggered)
-                {
-                    yield return null;
-                }
+            if (!colliderTriggered)
+            {
+                yield return null;
+            }
         }
         else
         {
