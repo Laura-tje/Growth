@@ -109,12 +109,14 @@ public class Lot_Manager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && _Plant_Still_Growing && !_Transfering)
+        if (other.gameObject.tag == "Player" && _Plant_Still_Growing && !_Transfering && other.GetComponentInChildren<Inventory>().InventoryItems.Count != 0)
         {
             //Save currently activated Coroutine to be able to stop it later on
+            _Transfering = true;
             storedCoroutine = StartCoroutine(_Transfer_Mats(other.gameObject));
 
-            _Transfering = true;
+            Debug.Log("Beep");
+
         }
     }
 
@@ -122,8 +124,11 @@ public class Lot_Manager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && _Plant_Still_Growing && _Transfering)
         {
-            //Stopping coroutine to prevent bugs
-            StopCoroutine(storedCoroutine);
+            if (storedCoroutine != null)
+            {
+                //Stopping coroutine to prevent bugs
+                StopCoroutine(storedCoroutine);
+            }
 
             _Transfering = false;
 
@@ -158,7 +163,6 @@ public class Lot_Manager : MonoBehaviour
             ApplySeedFromPlayerInventory(inventory);
         }
 
-
         //if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded && currentAmountOfSeeds > 0)
         //{
         //    _Transfering = false;
@@ -173,7 +177,7 @@ public class Lot_Manager : MonoBehaviour
         //To make it so that Water or Soil can not be added to the plant before a plant is even planted
         if (itemForGrowth != null && currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
         {
-            while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
+            while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded && inventory.InventoryItems.Count != 0 && _Transfering)
             {
                 //yield return new WaitForSeconds(0.1f);
 
@@ -252,7 +256,6 @@ public class Lot_Manager : MonoBehaviour
                     }
                 }
 
-
                 //Check if the plant has the max amount of plants
                 if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
                 {
@@ -264,6 +267,8 @@ public class Lot_Manager : MonoBehaviour
                     {
                         UpgradeObject(UpgradedObject);
                     }
+
+                    yield break;
                 }
                 else
                 {
@@ -275,7 +280,6 @@ public class Lot_Manager : MonoBehaviour
                 _Transfering = false;
             }
         }
-
     }
 
     public virtual void UpgradeObject(GameObject UpgradedObject)
