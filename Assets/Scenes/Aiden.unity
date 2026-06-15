@@ -380,6 +380,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1839272493920223727, guid: 284585ea95f6c0f46a82145fd7646113, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ef97f1aa6f3c0004bab9233c2a2f02cf, type: 2}
+    - target: {fileID: 2730698097626609099, guid: 284585ea95f6c0f46a82145fd7646113, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fd985417e5d27f4ba01a5cbf2287d84, type: 2}
+    - target: {fileID: 8088384520414073785, guid: 284585ea95f6c0f46a82145fd7646113, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: 8645338833666370174, guid: 284585ea95f6c0f46a82145fd7646113, type: 3}
       propertyPath: m_Name
       value: Blockout (1)
