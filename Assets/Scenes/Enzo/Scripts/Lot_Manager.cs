@@ -9,6 +9,7 @@ public class Lot_Manager : MonoBehaviour
 
     [SerializeField] private GameObject _Plant;
     [SerializeField] private GameObject _Player;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private bool _Plant_Still_Growing;
     [SerializeField] private bool _Plant_Done_Growing;
@@ -232,7 +233,7 @@ public class Lot_Manager : MonoBehaviour
                     else if (inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded && currentAmountOfSeeds > 0)
                     {
                         InventoryItem = inventory.InventoryItems[i].gameObject;
-
+                        animator.SetBool("Watering", true);
                         InventoryItem.transform.parent = null;
                         inventory.InventoryItems.Remove(InventoryItem);
                         inventory.ResetItemPlacement();
@@ -267,6 +268,8 @@ public class Lot_Manager : MonoBehaviour
                     {
                         UpgradeObject(UpgradedObject);
                     }
+
+                    animator.SetBool("Celebrate", true);
 
                     yield break;
                 }

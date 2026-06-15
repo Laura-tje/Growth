@@ -106,6 +106,7 @@ public class Seeds : MonoBehaviour
                 {
                     Debug.Log("Dies");
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+                    animator.SetBool("Hoe", false);
                     Destroy(gameObject);
                     yield return null;
                 }
