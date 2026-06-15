@@ -9,6 +9,7 @@ public class Lot_Manager : MonoBehaviour
 
     [SerializeField] private GameObject _Plant;
     [SerializeField] private GameObject _Player;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private bool _Plant_Still_Growing;
     [SerializeField] private bool _Plant_Done_Growing;
@@ -267,6 +268,8 @@ public class Lot_Manager : MonoBehaviour
                     {
                         UpgradeObject(UpgradedObject);
                     }
+
+                    animator.SetBool("Celebrate", true);
 
                     yield break;
                 }
