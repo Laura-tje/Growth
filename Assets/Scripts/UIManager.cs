@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
         PlayMode,
         PauseMode,
         OptionsMode,
-        EndScreen,
     }
 
     private Menu currentState;
@@ -16,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject PauseMenu;
     [SerializeField] GameObject OptionsMenu;
     [SerializeField] GameObject BeginScreen;
-    [SerializeField] GameObject EndScreen;
     [SerializeField] GameObject PauseButton;
     [SerializeField] GameObject FadeBackground;
 
@@ -65,7 +63,6 @@ public class UIManager : MonoBehaviour
 
     public void QuitButtonClicked()
     {
-        currentState = Menu.EndScreen;
         UpdateUI();
     }
 
@@ -75,7 +72,6 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(currentState == Menu.PauseMode);
         FadeBackground.SetActive(currentState == Menu.PauseMode || currentState == Menu.OptionsMode);
         OptionsMenu.SetActive(currentState == Menu.OptionsMode);
-        EndScreen.SetActive(currentState == Menu.EndScreen);
         
         PauseButton.SetActive(currentState == Menu.PlayMode);
     }
