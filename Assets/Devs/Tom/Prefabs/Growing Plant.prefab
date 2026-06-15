@@ -163,11 +163,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 413fdcf10e8b81b41b028e0a6eb1504f, type: 2}
   - {fileID: 11400000, guid: 0f35bb4e89ebf194298b05265c9664d9, type: 2}
   - {fileID: 11400000, guid: 1fcb899eec06cb14e8b52b08102acc38, type: 2}
-  MaxScale: 3
+  maxScale: 3
   currentAmountOfSeeds: 0
   currentAmountOfWater: 0
   currentAmountOfSoil: 0
   currentAmountOfAllItems: 0
   currentAmountOfAllItemsPercentage: 0
-  SeedPlacement: {fileID: 3141646692827529676}
+  seedPlacement: {fileID: 3141646692827529676}
+  UpgradedObject: {fileID: 0}
   typeFlower: -1
