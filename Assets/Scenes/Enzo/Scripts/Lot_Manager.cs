@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Lot_Manager : MonoBehaviour
@@ -22,7 +24,7 @@ public class Lot_Manager : MonoBehaviour
 
     private Vector3 targetVector3;
 
-    [SerializeField] private float MaxScale;
+    [SerializeField] private float maxScale;
 
     public int currentAmountOfSeeds;
 
@@ -34,7 +36,11 @@ public class Lot_Manager : MonoBehaviour
 
     public float currentAmountOfAllItemsPercentage;
 
-    [SerializeField] private Transform SeedPlacement;
+    [SerializeField] private Transform seedPlacement;
+
+    [SerializeField] private GameObject UpgradedObject;
+
+    private Coroutine storedCoroutine;
 
     public enum TypeFlowers
     {
@@ -52,7 +58,10 @@ public class Lot_Manager : MonoBehaviour
 
     private void Start()
     {
+        //Saving Start Size of Plant that will grow
         startScale = gameObject.transform.localScale.x;
+
+        //Checking how many Items the plant needs to be fully grown
         CurrentAmountOfItems();
 
         //_Check_Plant();
@@ -97,60 +106,75 @@ public class Lot_Manager : MonoBehaviour
 
     //}
 
-     
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && _Plant_Still_Growing && !_Transfering)
         {
-            StartCoroutine(_Transfer_Mats(other.gameObject));
-            Debug.Log("test");
+            //Save currently activated Coroutine to be able to stop it later on
+            storedCoroutine = StartCoroutine(_Transfer_Mats(other.gameObject));
+
             _Transfering = true;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if ( other.gameObject.tag == "Player" && _Plant_Still_Growing && _Transfering)
+        if (other.gameObject.tag == "Player" && _Plant_Still_Growing && _Transfering)
         {
+            //Stopping coroutine to prevent bugs
+            StopCoroutine(storedCoroutine);
+
             _Transfering = false;
+
+            _Plant_Still_Growing = true;
+
+            _Plant_Done_Growing = false;
         }
     }
 
     private IEnumerator _Transfer_Mats(GameObject Player)
     {
         // Guard clauses.
+
         //Player_Growth_Corrosponding_Script player_Script = _Player.GetComponent<Player_Growth_Corrosponding_Script>();
+
         if (Player == null) yield break; // If player is null, we cant do anything.
 
         Inventory inventory = Player.GetComponentInChildren<Inventory>();
         if (inventory == null) yield break; // If the player does not have an inventory, we cant do anything.
         if (inventory.InventoryItems.Count <= 0) yield break; // Player doesnt have any items, so we cant do anything.
 
-        Debug.Log(currentAmountOfAllItems);
+        if (itemForGrowth != null)
+        {
+            if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded) yield break;
+        }
 
-        if(typeFlower == TypeFlowers.None)
+        // 
+
+        //When the plant has not been planted yet, this will activate to give it a plant identity only ones
+        if (typeFlower == TypeFlowers.None && itemForGrowth == null)
         {
             ApplySeedFromPlayerInventory(inventory);
         }
 
-        if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
+
+        //if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded && currentAmountOfSeeds > 0)
+        //{
+        //    _Transfering = false;
+
+        //    _Plant_Still_Growing = false;
+
+        //    _Plant_Done_Growing = true;
+
+        //    Debug.Log("Transfering mats stopped");
+        //}
+
+        //To make it so that Water or Soil can not be added to the plant before a plant is even planted
+        if (itemForGrowth != null && currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
         {
-            _Transfering = false;
-
-            _Plant_Still_Growing = false;
-
-            _Plant_Done_Growing = true;
-
-            Debug.Log("Transfering mats stopped");
-        }
-
-        else if (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
-        {
-
             while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
             {
-
                 //yield return new WaitForSeconds(0.1f);
 
                 Seeds currentSeeds;
@@ -163,50 +187,56 @@ public class Lot_Manager : MonoBehaviour
                         currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                         InventoryItem = inventory.InventoryItems[i].gameObject;
 
+                        //if the seed is the same as the seed that the plant is looking for then it can be added to the plant if it doesn't have the max amount of seeds it needs
                         if (currentSeeds.flowerSeed == typeFlower)
                         {
+                            //Disconnect the item from the inventory slot to make it be able to move to the plant for animation
                             InventoryItem.transform.parent = null;
+
                             inventory.InventoryItems.Remove(InventoryItem);
                             inventory.seeds.Remove(InventoryItem);
                             inventory.ResetItemPlacement();
-                            while(InventoryItem.transform.position != gameObject.transform.position)
+
+                            while (InventoryItem.transform.position != gameObject.transform.position)
                             {
+                                //Move the focused item object towards the plant slowly
                                 InventoryItem.transform.position = Vector3.MoveTowards(InventoryItem.transform.position, gameObject.transform.position, Time.deltaTime * 5f);
                                 yield return new WaitForEndOfFrame();
                             }
+
                             if (!_Plant)
                             {
+                                //make the actual plant appear in the game that will be growing and get the start size of the plant before it grows
                                 startScale = itemForGrowth.plantToGrow.transform.localScale.x;
-                                _Plant = Instantiate(itemForGrowth.plantToGrow, SeedPlacement.transform.position, SeedPlacement.transform.rotation, SeedPlacement.transform);
+                                _Plant = Instantiate(itemForGrowth.plantToGrow, seedPlacement.transform.position, seedPlacement.transform.rotation, seedPlacement.transform);
                             }
                         }
-                        if(InventoryItem.transform.position == gameObject.transform.position)
+                        if (InventoryItem.transform.position == gameObject.transform.position)
                         {
                             currentAmountOfSeeds += 1;
                             CurrentAmountOfItems();
                             Destroy(InventoryItem);
-                            while(_Plant.transform.localScale != targetVector3)
+                            while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
-                                Debug.Log("Dies");
                                 yield return new WaitForEndOfFrame();
                             }
                         }
                     }
 
-                    else if(inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded)
+                    else if (inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded && currentAmountOfSeeds > 0)
                     {
                         InventoryItem = inventory.InventoryItems[i].gameObject;
 
-                            InventoryItem.transform.parent = null;
-                            inventory.InventoryItems.Remove(InventoryItem);
-                            inventory.ResetItemPlacement();
-                            while (InventoryItem.transform.position != gameObject.transform.position)
-                            {
-                                InventoryItem.transform.position = Vector3.MoveTowards(InventoryItem.transform.position, gameObject.transform.position, Time.deltaTime * 5);
-                                yield return new WaitForEndOfFrame();
-                            }
-                            
+                        InventoryItem.transform.parent = null;
+                        inventory.InventoryItems.Remove(InventoryItem);
+                        inventory.ResetItemPlacement();
+                        while (InventoryItem.transform.position != gameObject.transform.position)
+                        {
+                            InventoryItem.transform.position = Vector3.MoveTowards(InventoryItem.transform.position, gameObject.transform.position, Time.deltaTime * 5);
+                            yield return new WaitForEndOfFrame();
+                        }
+
                         if (InventoryItem.transform.position == gameObject.transform.position)
                         {
                             currentAmountOfWater += 1;
@@ -221,23 +251,34 @@ public class Lot_Manager : MonoBehaviour
                     }
                 }
 
-                _Transfering = true;
+                if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
+                {
+                    _Plant_Still_Growing = false;
 
-                _Plant_Still_Growing = true;
+                    _Plant_Done_Growing = true;
 
-                _Plant_Done_Growing = false;
+                    if (UpgradedObject != null)
+                    {
+                        UpgradeObject(UpgradedObject);
+                    }
+                }
+                else
+                {
+                    _Plant_Still_Growing = true;
+
+                    _Plant_Done_Growing = false;
+                }
 
                 _Transfering = false;
-
-                Debug.Log(_Transfering);
-
-                if (_Transfering == false)
-                {
-                    break;
-                }
             }
         }
 
+    }
+
+    public virtual void UpgradeObject(GameObject UpgradedObject)
+    {
+        Destroy(gameObject);
+        Instantiate(UpgradedObject, transform.position, transform.rotation);
     }
 
     private void ApplySeedFromPlayerInventory(Inventory inventory)
@@ -246,13 +287,17 @@ public class Lot_Manager : MonoBehaviour
         GameObject InventoryItem;
         for (int i = 0; i < inventory.InventoryItems.Count; i++)
         {
-            currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
-            InventoryItem = inventory.InventoryItems[i].gameObject;
+            if (inventory.InventoryItems[i].GetComponent<Seeds>() != null)
+            {
+                Debug.Log("Bug");
+                currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
+                InventoryItem = inventory.InventoryItems[i].gameObject;
 
-            typeFlower = currentSeeds.flowerSeed;
-            itemForGrowth = flowerItemsForGrowth[(int)typeFlower];
-            itemForGrowth.MaxAmountOfItemsNeeded();
-            break;
+                typeFlower = currentSeeds.flowerSeed;
+                itemForGrowth = flowerItemsForGrowth[(int)typeFlower];
+                itemForGrowth.MaxAmountOfItemsNeeded();
+                break;
+            }
         }
     }
 
@@ -260,10 +305,10 @@ public class Lot_Manager : MonoBehaviour
     {
         currentAmountOfAllItems = currentAmountOfSeeds + currentAmountOfWater + currentAmountOfSoil;
 
-        if(itemForGrowth != null)
+        if (itemForGrowth != null)
         {
             currentAmountOfAllItemsPercentage = currentAmountOfAllItems / itemForGrowth.allItemsNeeded * 1;
-            target = currentAmountOfAllItemsPercentage * (MaxScale - startScale);
+            target = currentAmountOfAllItemsPercentage * (maxScale - startScale);
             target = target + startScale;
             targetVector3 = new Vector3(target, target, target);
         }

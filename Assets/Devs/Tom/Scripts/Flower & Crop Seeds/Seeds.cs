@@ -45,7 +45,6 @@ public class Seeds : MonoBehaviour
             colliderTriggered = true;
             if (mainCanvas != null)
             {
-                Debug.Log("Active");
                 mainCanvas.gameObject.SetActive(true);
             }
             storedCoroutine = StartCoroutine(WhackSeeds(other.gameObject));
@@ -95,7 +94,6 @@ public class Seeds : MonoBehaviour
 
                 if (hitLives <= 0)
                 {
-                    Debug.Log("Dies");
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
                     //Destroy(gameObject);
                     yield return null;
