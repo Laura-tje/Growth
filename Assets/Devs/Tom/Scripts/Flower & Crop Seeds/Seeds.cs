@@ -39,20 +39,18 @@ public class Seeds : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.GetComponentInChildren<Inventory>().InventoryItems.Count < other.GetComponentInChildren<Inventory>().InventorySlots.Count)
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = true;
             if (mainCanvas != null)
             {
-                Debug.Log("Active");
                 mainCanvas.gameObject.SetActive(true);
             }
 
-            
+
             animator = other.GetComponentInChildren<Animator>();
-            Debug.Log(animator); 
-            
+
             storedCoroutine = StartCoroutine(WhackSeeds(other.gameObject));
         }
     }
@@ -63,7 +61,7 @@ public class Seeds : MonoBehaviour
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = false;
-            
+
             StopCoroutine(storedCoroutine);
 
             if (mainCanvas != null)
@@ -104,8 +102,8 @@ public class Seeds : MonoBehaviour
 
                 if (hitLives <= 0)
                 {
-                    Debug.Log("Dies");
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+                    animator.SetBool("Hoe", false);
                     Destroy(gameObject);
                     yield return null;
                 }
@@ -113,10 +111,10 @@ public class Seeds : MonoBehaviour
                 yield return new WaitForSeconds(1f);
 
             }
-                if (!colliderTriggered)
-                {
-                    yield return null;
-                }
+            if (!colliderTriggered)
+            {
+                yield return null;
+            }
         }
         else
         {

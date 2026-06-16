@@ -62,19 +62,19 @@ public class WaterUpdater : MonoBehaviour
                 }
             }
 
-            if ( amountOfCrops >= neededAmount)
+            if ( amountOfCrops >= upgradeRequirements[currentUpgradeIndex])
             {
-                neededAmount = 0;
+                upgradeRequirements[currentUpgradeIndex] = 0;
                 Well.UpdateWell();
                 //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 amountOfCrops = 0;
-                ItemsNeededText.text = neededAmount.ToString();
+                ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 Debug.Log("The player successfully updated the water well to convenience himself. How selfish...");
             } 
-            else if ( amountOfCrops < neededAmount)
+            else if ( amountOfCrops < upgradeRequirements[currentUpgradeIndex])
             {
-                neededAmount -= amountOfCrops;
-                ItemsNeededText.text = neededAmount.ToString();
+                upgradeRequirements[currentUpgradeIndex] -= amountOfCrops;
+                ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 amountOfCrops = 0;
                 Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");
