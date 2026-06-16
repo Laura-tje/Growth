@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RosePlant
   m_EditorClassIdentifier: 
   seedsNeeded: 3
-  waterNeeded: 0
+  waterNeeded: 1
   soilNeeded: 0
   allItemsNeeded: 3
   plantToGrow: {fileID: 7352785610838309532, guid: fa030484ea56eae4ab7254e575f12fe9, type: 3}
