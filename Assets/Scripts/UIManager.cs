@@ -48,22 +48,44 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+
         currentState = Menu.StartScreen;
         UpdateUI();
     }
 
     void Update()
     {
+        bool justFound = false;
+
         if (eventSystem == null)
         {
-            eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+            var es = GameObject.Find("EventSystem");
+            if (es != null)
+            {
+                eventSystem = es.GetComponent<EventSystem>();
+                justFound = true;
+            }
         }
 
         if (playerInput == null)
         {
-            playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+            var p = GameObject.Find("Player");
+            if (p != null)
+            {
+                playerInput = p.GetComponent<PlayerInput>();
+                justFound = true;
+            }
+        }
+
+        if (justFound)
+        {
+            UpdateUI(); // pas nu kan de selectie en action map correct gezet worden
         }
     }
+    
+    
     
     public void PauseButtonClicked()
     {
@@ -110,10 +132,12 @@ public class UIManager : MonoBehaviour
             if (currentState == Menu.PlayMode)
             {
                 playerInput.SwitchCurrentActionMap("Player");
+                Debug.Log("player");
             }
             else
             {
                 playerInput.SwitchCurrentActionMap("UI");
+                Debug.Log("UI");
             }
         }
 
