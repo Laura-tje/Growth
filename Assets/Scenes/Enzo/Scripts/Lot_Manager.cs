@@ -117,7 +117,6 @@ public class Lot_Manager : MonoBehaviour
             storedCoroutine = StartCoroutine(_Transfer_Mats(other.gameObject));
 
             Debug.Log("Beep");
-
         }
     }
 
@@ -176,6 +175,7 @@ public class Lot_Manager : MonoBehaviour
         //}
 
         //To make it so that Water or Soil can not be added to the plant before a plant is even planted
+
         if (itemForGrowth != null && currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
         {
             while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded && inventory.InventoryItems.Count != 0 && _Transfering)
@@ -248,7 +248,7 @@ public class Lot_Manager : MonoBehaviour
                             currentAmountOfWater += 1;
                             CurrentAmountOfItems();
                             Destroy(InventoryItem);
-                            while (gameObject.transform.localScale != targetVector3)
+                            while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
                                 yield return new WaitForEndOfFrame();
@@ -275,7 +275,7 @@ public class Lot_Manager : MonoBehaviour
                             currentAmountOfSoil += 1;
                             CurrentAmountOfItems();
                             Destroy(InventoryItem);
-                            while (gameObject.transform.localScale != targetVector3)
+                            while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
                                 yield return new WaitForEndOfFrame();
@@ -328,7 +328,6 @@ public class Lot_Manager : MonoBehaviour
         {
             if (inventory.InventoryItems[i].GetComponent<Seeds>() != null)
             {
-                Debug.Log("Bug");
                 currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                 InventoryItem = inventory.InventoryItems[i].gameObject;
 

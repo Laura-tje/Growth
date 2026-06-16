@@ -76,7 +76,6 @@ public class Spawn_Objects_System : MonoBehaviour
 
         StartCoroutine(Spawn_Objects());
 
-        Debug.Log("Started spawning objects");
     }
 
     private IEnumerator Spawn_Objects()
@@ -92,13 +91,11 @@ public class Spawn_Objects_System : MonoBehaviour
                 _Objects_To_Spawn[random_Object_Index].gameObject.transform.rotation,
                 spawn_Location.transform
             );
-        }
+        } 
 
         while (true)
         {
             yield return new WaitForSeconds(10f);
-
-            Debug.Log("Spawning new objecfts");
 
             foreach (GameObject spawn_Location in _Spawn_Locations)
             {
