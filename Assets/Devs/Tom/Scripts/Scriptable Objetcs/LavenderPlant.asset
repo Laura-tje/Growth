@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedsNeeded: 4
   waterNeeded: 1
-  soilNeeded: 0
+  soilNeeded: 2
   allItemsNeeded: 4
   plantToGrow: {fileID: 7352785610838309532, guid: fa030484ea56eae4ab7254e575f12fe9, type: 3}
