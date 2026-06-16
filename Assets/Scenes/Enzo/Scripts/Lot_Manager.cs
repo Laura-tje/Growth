@@ -255,6 +255,33 @@ public class Lot_Manager : MonoBehaviour
                             }
                         }
                     }
+
+                    else if (inventory.InventoryItems[i].GetComponent<Soil>() != null && itemForGrowth.soilNeeded > 0 && currentAmountOfSoil < itemForGrowth.soilNeeded && currentAmountOfSeeds > 0)
+                    {
+                        InventoryItem = inventory.InventoryItems[i].gameObject;
+                        Debug.Log("Soil");
+                        //animator.SetBool("Watering", true);
+                        InventoryItem.transform.parent = null;
+                        inventory.InventoryItems.Remove(InventoryItem);
+                        inventory.ResetItemPlacement();
+                        while (InventoryItem.transform.position != gameObject.transform.position)
+                        {
+                            InventoryItem.transform.position = Vector3.MoveTowards(InventoryItem.transform.position, gameObject.transform.position, Time.deltaTime * 5);
+                            yield return new WaitForEndOfFrame();
+                        }
+
+                        if (InventoryItem.transform.position == gameObject.transform.position)
+                        {
+                            currentAmountOfSoil += 1;
+                            CurrentAmountOfItems();
+                            Destroy(InventoryItem);
+                            while (gameObject.transform.localScale != targetVector3)
+                            {
+                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
+                                yield return new WaitForEndOfFrame();
+                            }
+                        }
+                    }
                 }
 
                 //Check if the plant has the max amount of plants
