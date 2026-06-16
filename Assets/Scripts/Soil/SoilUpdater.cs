@@ -60,19 +60,19 @@ public class SoilUpdater : MonoBehaviour
                 }
             }
             
-            if ( amountOfFlowers >= neededAmount)
+            if (amountOfFlowers >= upgradeRequirements[currentUpgradeIndex])
             {
                 neededAmount = 0;
                 Soil.UpdateSoil();
                 //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 amountOfFlowers = 0;
-                ItemsNeededText.text = neededAmount.ToString();
+                ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 Debug.Log("The player successfully updated the soil well to convenience himself. How selfish...");
             } 
-            else if ( amountOfFlowers < neededAmount)
+            else if ( amountOfFlowers < upgradeRequirements[currentUpgradeIndex])
             {
-                neededAmount = amountOfFlowers;
-                ItemsNeededText.text = neededAmount.ToString();
+                upgradeRequirements[currentUpgradeIndex] -= amountOfFlowers;
+                ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 amountOfFlowers = 0;
                 Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");

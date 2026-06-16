@@ -9,6 +9,7 @@ public class Lot_Manager : MonoBehaviour
 
     [SerializeField] private GameObject _Plant;
     [SerializeField] private GameObject _Player;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private bool _Plant_Still_Growing;
     [SerializeField] private bool _Plant_Done_Growing;
@@ -116,7 +117,6 @@ public class Lot_Manager : MonoBehaviour
             storedCoroutine = StartCoroutine(_Transfer_Mats(other.gameObject));
 
             Debug.Log("Beep");
-
         }
     }
 
@@ -175,6 +175,7 @@ public class Lot_Manager : MonoBehaviour
         //}
 
         //To make it so that Water or Soil can not be added to the plant before a plant is even planted
+
         if (itemForGrowth != null && currentAmountOfAllItems <= itemForGrowth.allItemsNeeded)
         {
             while (currentAmountOfAllItems <= itemForGrowth.allItemsNeeded && inventory.InventoryItems.Count != 0 && _Transfering)
@@ -232,7 +233,7 @@ public class Lot_Manager : MonoBehaviour
                     else if (inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded && currentAmountOfSeeds > 0)
                     {
                         InventoryItem = inventory.InventoryItems[i].gameObject;
-
+                        animator.SetBool("Watering", true);
                         InventoryItem.transform.parent = null;
                         inventory.InventoryItems.Remove(InventoryItem);
                         inventory.ResetItemPlacement();
@@ -247,7 +248,34 @@ public class Lot_Manager : MonoBehaviour
                             currentAmountOfWater += 1;
                             CurrentAmountOfItems();
                             Destroy(InventoryItem);
-                            while (gameObject.transform.localScale != targetVector3)
+                            while (_Plant.transform.localScale != targetVector3)
+                            {
+                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
+                                yield return new WaitForEndOfFrame();
+                            }
+                        }
+                    }
+
+                    else if (inventory.InventoryItems[i].GetComponent<Soil>() != null && itemForGrowth.soilNeeded > 0 && currentAmountOfSoil < itemForGrowth.soilNeeded && currentAmountOfSeeds > 0)
+                    {
+                        InventoryItem = inventory.InventoryItems[i].gameObject;
+                        Debug.Log("Soil");
+                        //animator.SetBool("Watering", true);
+                        InventoryItem.transform.parent = null;
+                        inventory.InventoryItems.Remove(InventoryItem);
+                        inventory.ResetItemPlacement();
+                        while (InventoryItem.transform.position != gameObject.transform.position)
+                        {
+                            InventoryItem.transform.position = Vector3.MoveTowards(InventoryItem.transform.position, gameObject.transform.position, Time.deltaTime * 5);
+                            yield return new WaitForEndOfFrame();
+                        }
+
+                        if (InventoryItem.transform.position == gameObject.transform.position)
+                        {
+                            currentAmountOfSoil += 1;
+                            CurrentAmountOfItems();
+                            Destroy(InventoryItem);
+                            while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
                                 yield return new WaitForEndOfFrame();
@@ -267,6 +295,8 @@ public class Lot_Manager : MonoBehaviour
                     {
                         UpgradeObject(UpgradedObject);
                     }
+
+                    animator.SetBool("Celebrate", true);
 
                     yield break;
                 }
@@ -298,7 +328,6 @@ public class Lot_Manager : MonoBehaviour
         {
             if (inventory.InventoryItems[i].GetComponent<Seeds>() != null)
             {
-                Debug.Log("Bug");
                 currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                 InventoryItem = inventory.InventoryItems[i].gameObject;
 
