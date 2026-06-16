@@ -496,17 +496,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99eb1adf7eef877458cd4e92cb8719c6, type: 3}
---- !u!114 &1085136589 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4105478938285522111, guid: 319df1831b6158e4493fe0fadfbe540f, type: 3}
-  m_PrefabInstance: {fileID: 609495340}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1106735719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -701,21 +690,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1283373217 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7260318952299714919, guid: 53768e321b68054499628a9951d309d0, type: 3}
-  m_PrefabInstance: {fileID: 7145680649132912497}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1574293293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4106742890921975490, guid: 53768e321b68054499628a9951d309d0, type: 3}
-  m_PrefabInstance: {fileID: 7145680649132912497}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1635198624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6178533308524316790, guid: 53768e321b68054499628a9951d309d0, type: 3}
-  m_PrefabInstance: {fileID: 7145680649132912497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2549277755689241298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -960,44 +934,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4106742890921975490, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: m_Name
-      value: ResumeButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: EventSystem
-      value: 
-      objectReference: {fileID: 581458403}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: eventSystem
-      value: 
-      objectReference: {fileID: 581458403}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: pauseButton
-      value: 
-      objectReference: {fileID: 48274429}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 1085136589}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: soundToggle
-      value: 
-      objectReference: {fileID: 1283373217}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: startButton
-      value: 
-      objectReference: {fileID: 1635198624}
-    - target: {fileID: 4498739998880297303, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: resumeButton
-      value: 
-      objectReference: {fileID: 1574293293}
-    - target: {fileID: 5385841506181674223, guid: 53768e321b68054499628a9951d309d0, type: 3}
-      propertyPath: m_text
-      value: 'Resume
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
