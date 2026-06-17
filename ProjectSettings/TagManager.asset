@@ -8,6 +8,9 @@ TagManager:
   - Spawn_Location
   - Undefined
   - Harvestable Object
+  - Items
+  - Crop
+  - Flower
   layers:
   - Default
   - TransparentFX

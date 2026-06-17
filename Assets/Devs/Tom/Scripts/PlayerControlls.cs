@@ -9,11 +9,13 @@ public class PlayerControlls : MonoBehaviour
     private InputActionMap _currentMap;
 
     private InputAction _moveAction;
-    private GameObject _playerChild;
+    [SerializeField] private GameObject _playerChild;
     public Vector3 move { get; private set; }
     [SerializeField] private float M_Speed;
 
     [SerializeField] private GameObject Inventory;
+
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class PlayerControlls : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _playerChild =  transform.GetChild(0).gameObject;
+        
     }
 
     // Update is called once per frame
@@ -41,8 +43,16 @@ public class PlayerControlls : MonoBehaviour
 
            if (move != Vector3.zero)
            {
-               Quaternion targetRotation = Quaternion.LookRotation(move);
+               Quaternion targetRotation = Quaternion.LookRotation(-move);
                _playerChild.transform.rotation = Quaternion.RotateTowards(_playerChild.transform.rotation, targetRotation, 500f * Time.deltaTime);
+
+                //Enzo here, this is the line I added
+                animator.SetBool("Walking", true);
+           }
+           //Enzo here again, I added this too.
+           else
+           {
+                animator.SetBool("Walking", false);
            }
     }
 

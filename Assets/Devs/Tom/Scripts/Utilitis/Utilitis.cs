@@ -4,19 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class Utilitis : MonoBehaviour
 {
-    public void EnterMainScene()
+    public void Start()
     {
-
+        Time.timeScale = 0f;
+    }
+    
+    public void StartGame()
+    {
+        
     }
 
-    public void EnterBeginScene()
+    public void RestartGame()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void EnterEndScene()
+    public void EndGame()
     {
+        
+    }
 
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     public void PauseGame()

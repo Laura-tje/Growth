@@ -1,21 +1,25 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class ItemList : MonoBehaviour
 {
-    public GameObject Item;
+    public List<GameObject> Item;
 
-    public enum ObtainablItems
+    public enum ObtainablItems 
     {
         Seed,
         Water,
-        Soil
+        Soil,
+        Flower,
+        Crops
     }
 
     [SerializeField] public ObtainablItems obtainablItems;
 
     private enum CropSeeds
     {
-
+        
     }
     [SerializeField] private CropSeeds cropSeed;
 
@@ -31,4 +35,5 @@ public class ItemList : MonoBehaviour
     {
         
     }
+    
 }
