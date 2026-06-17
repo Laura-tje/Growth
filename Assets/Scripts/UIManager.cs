@@ -61,20 +61,20 @@ public class UIManager : MonoBehaviour
 
         if (eventSystem == null)
         {
-            var es = GameObject.Find("EventSystem");
-            if (es != null)
+            GameObject EventSystem = GameObject.Find("EventSystem");
+            if (EventSystem != null)
             {
-                eventSystem = es.GetComponent<EventSystem>();
+                eventSystem = EventSystem.GetComponent<EventSystem>();
                 justFound = true;
             }
         }
 
         if (playerInput == null)
         {
-            var p = GameObject.Find("Player");
-            if (p != null)
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
             {
-                playerInput = p.GetComponent<PlayerInput>();
+                playerInput = player.GetComponent<PlayerInput>();
                 justFound = true;
             }
         }
@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
     public void PauseButtonClicked()
     {
         currentState = Menu.PauseMode;
+        Sound_Manage_III.Instance._Play_Sound(0);
         UpdateUI();
     }
 
