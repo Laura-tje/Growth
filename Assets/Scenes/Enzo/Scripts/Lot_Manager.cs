@@ -160,7 +160,7 @@ public class Lot_Manager : MonoBehaviour
         //When the plant has not been planted yet, this will activate to give it a plant identity only ones
         if (typeFlower == TypeFlowers.None && itemForGrowth == null)
         {
-            ApplySeedFromPlayerInventory(inventory);
+            ApplySeedFromPlayerInventory(inventory, Player);
         }
 
         //if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded && currentAmountOfSeeds > 0)
@@ -238,6 +238,7 @@ public class Lot_Manager : MonoBehaviour
                     {
                         InventoryItem = inventory.InventoryItems[i].gameObject;
                         animator.SetBool("Watering", true);
+                        Sound_Manage_III.Instance._Play_Sound(4);
                         InventoryItem.transform.parent = null;
                         inventory.InventoryItems.Remove(InventoryItem);
                         inventory.ResetItemPlacement();
@@ -327,7 +328,7 @@ public class Lot_Manager : MonoBehaviour
         Instantiate(UpgradedObject, transform.position, transform.rotation);
     }
 
-    private void ApplySeedFromPlayerInventory(Inventory inventory)
+    private void ApplySeedFromPlayerInventory(Inventory inventory, GameObject Player)
     {
         //for the first time you plant a seed in the ground for the plant to grow
         Seeds currentSeeds;
@@ -345,6 +346,8 @@ public class Lot_Manager : MonoBehaviour
                 break;
             }
         }
+
+        animator = Player.GetComponentInChildren<Animator>();
     }
 
     public void CurrentAmountOfItems()
