@@ -48,49 +48,76 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+
         currentState = Menu.StartScreen;
         UpdateUI();
     }
 
     void Update()
     {
+        bool justFound = false;
+
         if (eventSystem == null)
         {
-            eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+            GameObject EventSystem = GameObject.Find("EventSystem");
+            if (EventSystem != null)
+            {
+                eventSystem = EventSystem.GetComponent<EventSystem>();
+                justFound = true;
+            }
         }
 
         if (playerInput == null)
         {
-            playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                playerInput = player.GetComponent<PlayerInput>();
+                justFound = true;
+            }
+        }
+
+        if (justFound)
+        {
+            UpdateUI(); // pas nu kan de selectie en action map correct gezet worden
         }
     }
     
+    
+    
     public void PauseButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.PauseMode;
         UpdateUI();
     }
 
     public void PlayButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.PlayMode;
         UpdateUI();
     }
 
     public void RestartButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.StartScreen;
         UpdateUI();
     }
 
     public void OptionsButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.OptionsMode;
         UpdateUI();
     }
 
     public void QuitButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         Debug.Log("Game Afgesloten");
         Application.Quit();
     }
@@ -110,10 +137,12 @@ public class UIManager : MonoBehaviour
             if (currentState == Menu.PlayMode)
             {
                 playerInput.SwitchCurrentActionMap("Player");
+                Debug.Log("player");
             }
             else
             {
                 playerInput.SwitchCurrentActionMap("UI");
+                Debug.Log("UI");
             }
         }
 
