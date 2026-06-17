@@ -44,6 +44,7 @@ public class SoilBox : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && math.round(GeneratedSoil) > 0)
         {
+            Sound_Manage_III.Instance._Play_Sound(2);
             Debug.Log("Player was hungry and got some soil");
             float number = GeneratedSoil;
             Inventory.AddObjectToInventory(gameObject);
@@ -57,6 +58,7 @@ public class SoilBox : MonoBehaviour
         switch (currentState)
         {
             case SoilState.Empty:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState =  SoilState.Hive;
                 updaterScript.UpdateNeededAmount();
                 break;

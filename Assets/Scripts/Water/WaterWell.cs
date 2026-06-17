@@ -49,6 +49,7 @@ public class WaterWell : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && math.round(GeneratedWater) > 0)
         {
+            Sound_Manage_III.Instance._Play_Sound(2);
             Debug.Log("Player was thirsty and got some water");
             float number = GeneratedWater;
             Inventory.AddObjectToInventory(gameObject);
@@ -62,14 +63,17 @@ public class WaterWell : MonoBehaviour
         switch (currentState)
         {
             case WaterState.Empty:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Can;
                 updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Can:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Hose;
                 updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Hose:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Well;
                 updaterScript.UpdateNeededAmount();
                 break;

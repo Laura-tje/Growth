@@ -41,6 +41,7 @@ public class River : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && GeneratedWater >= 1f)
         {
+            Sound_Manage_III.Instance._Play_Sound(2);
             Debug.Log("Player was thirsty and got some water");
             Inventory.AddObjectToInventory(gameObject);
             GeneratedWater = 0f;
