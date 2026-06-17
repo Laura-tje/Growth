@@ -18,13 +18,31 @@ public class Sound_Manage_III : MonoBehaviour
         whacking = 5, 
         upgrading = 6, 
         flying = 7,
+        deleting = 8,
     
     }
     
     [SerializeField] private AudioClip[] _Sound_Clips;
     public static Sound_Manage_III Instance;
-    private AudioSource _Audio_Source;
+    [SerializeField] private AudioSource _Audio_Source;
+    [SerializeField] private AudioSource musicSource;
+    private bool SoundOn = true;
 
+
+    public void SwitchSoundToggle()
+    {
+        if (SoundOn)
+        {
+            SoundOn = false;
+            musicSource.Pause();
+        }
+        else
+        {
+            SoundOn = true;
+            musicSource.Play();
+        }
+    }
+    
     private void Awake()
     {
         if (Instance == null)
@@ -39,12 +57,19 @@ public class Sound_Manage_III : MonoBehaviour
     }
     private void Start()
     {
-        _Audio_Source = GetComponent<AudioSource>();
+        //_Audio_Source = GetComponent<AudioSource>();
+        musicSource.loop = true;
+        musicSource.clip = _Sound_Clips[0];
+        musicSource.Play();
     }
     public void _Play_Sound(int index)
     {
-        _Audio_Source.PlayOneShot(_Sound_Clips[index]);
-        Debug.Log(index);
+        if (SoundOn)
+        {
+            _Audio_Source.PlayOneShot(_Sound_Clips[index]);
+            Debug.Log(index);
+        }
+
     }
     
     
