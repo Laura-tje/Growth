@@ -266,7 +266,6 @@ MonoBehaviour:
   - 5
   - 10
   - 20
-  - 25
 --- !u!1 &1636318109164962166
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8596340894200191762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -868,6 +867,7 @@ MonoBehaviour:
   can: {fileID: 9099076289510543339}
   hose: {fileID: 3746034112899299997}
   well: {fileID: 4321663396195110236}
+  Lots: []
   currentState: 0
 --- !u!65 &3888233606384684746
 BoxCollider:

@@ -877,10 +877,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soil Box
       objectReference: {fileID: 0}
-    - target: {fileID: 2093044431363822748, guid: 0aafa8cd621b978488601279564e533f, type: 3}
-      propertyPath: Inventory
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.653
@@ -919,10 +915,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4497107586751354744, guid: 0aafa8cd621b978488601279564e533f, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
