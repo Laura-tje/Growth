@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 5905473599712599607}
   - component: {fileID: 6029578764629341524}
   - component: {fileID: 3330594063644128520}
+  - component: {fileID: 3789417336364214496}
   m_Layer: 6
-  m_Name: LilySeed
+  m_Name: Tulip Flower
   m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6112366391706571187
 Transform:
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7632510792d396e4abe42645d477a361, type: 2}
-  - {fileID: 2100000, guid: 5ca50ddb5e61ecd44adeb3ec6c2e65fa, type: 2}
+  - {fileID: 2100000, guid: 2e46abd64fd30a140afb47112ded8a14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,9 +123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 1
+  flowerSeed: 0
   hitLives: 0
   maxHitLives: 0
   HpBar: {fileID: 0}
   mainCanvas: {fileID: 0}
   speed: 0
+--- !u!114 &3789417336364214496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711909753205647225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018a454476d9a674aaac6db9d2e8f839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectRotation: {x: -90, y: 0, z: 0}

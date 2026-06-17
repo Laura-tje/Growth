@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15d2cd11c95bad54294943d8a99c4bd1, type: 3}
-  m_Name: SunflowerPlant 1
+  m_Name: Kurku Plant
   m_EditorClassIdentifier: 
   seedsNeeded: 1
   waterNeeded: 2
   soilNeeded: 2
-  allItemsNeeded: 2
-  plantToGrow: {fileID: 7352785610838309532, guid: fa030484ea56eae4ab7254e575f12fe9, type: 3}
+  allItemsNeeded: 5
+  plantToGrow: {fileID: 570544538829720561, guid: faa7369446d160840a33e25fa214c3f8, type: 3}

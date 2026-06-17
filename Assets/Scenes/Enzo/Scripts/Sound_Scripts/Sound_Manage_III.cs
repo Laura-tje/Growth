@@ -1,11 +1,10 @@
+using Unity.Mathematics;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 
 [RequireComponent(typeof(AudioSource))]
 public class Sound_Manage_III : MonoBehaviour
 {
+    private int RandomPitch;
     public enum SoundType
     {
     
@@ -67,11 +66,9 @@ public class Sound_Manage_III : MonoBehaviour
         if (SoundOn)
         {
             _Audio_Source.PlayOneShot(_Sound_Clips[index]);
-            Debug.Log(index);
         }
-
     }
-    
+        
     
 
 }

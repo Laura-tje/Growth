@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Lot_Manager : MonoBehaviour
@@ -43,16 +44,21 @@ public class Lot_Manager : MonoBehaviour
 
     private Coroutine storedCoroutine;
 
-    public enum TypeFlowers
+    public enum TypePlant
     {
         None = -1,
         Tulip = 0,
-        Lily = 1,
+        Lily = 1, 
         Forget_Me_not = 2,
-        Sunflower = 3
+        Sunflower = 3,
+        Carrots = 4,
+        CaulliFlower = 5,
+        Kurku = 6,
+        StrawBerryBush = 7,
+        WaterMelon = 8
     }
 
-    [SerializeField] public TypeFlowers typeFlower;
+    [SerializeField] public TypePlant typePlant;
 
     //[SerializeField] private int _Current_Amount_Mats;
     //private int _Max_Amount_Mats_Grow;
@@ -158,7 +164,7 @@ public class Lot_Manager : MonoBehaviour
         // 
 
         //When the plant has not been planted yet, this will activate to give it a plant identity only ones
-        if (typeFlower == TypeFlowers.None && itemForGrowth == null)
+        if (typePlant == TypePlant.None && itemForGrowth == null)
         {
             ApplySeedFromPlayerInventory(inventory, Player);
         }
@@ -187,13 +193,13 @@ public class Lot_Manager : MonoBehaviour
 
                 for (int i = 0; i < inventory.InventoryItems.Count; i++)
                 {
-                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded)
+                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded && inventory.InventoryItems[i].gameObject.tag == "Items")
                     {
                         currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                         InventoryItem = inventory.InventoryItems[i].gameObject;
 
                         //if the seed is the same as the seed that the plant is looking for then it can be added to the plant if it doesn't have the max amount of seeds it needs
-                        if (currentSeeds.flowerSeed == typeFlower)
+                        if (currentSeeds.typePlant == typePlant)
                         {
                             //Disconnect the item from the inventory slot to make it be able to move to the plant for animation
                             InventoryItem.transform.parent = null;
@@ -214,6 +220,10 @@ public class Lot_Manager : MonoBehaviour
                                 //make the actual plant appear in the game that will be growing and get the start size of the plant before it grows
                                 startScale = itemForGrowth.plantToGrow.transform.localScale.x;
                                 _Plant = Instantiate(itemForGrowth.plantToGrow, seedPlacement.transform.position, itemForGrowth.plantToGrow.transform.rotation, seedPlacement.transform);
+
+                                GetComponentInChildren<ItemList>().enabled = false;
+                                GetComponentInChildren<Seeds>().enabled = false;
+                                GetComponentInChildren<Seeds>().mainCanvas.gameObject.SetActive(false);
                             }
                         }
 
@@ -231,7 +241,6 @@ public class Lot_Manager : MonoBehaviour
                                 yield return new WaitForEndOfFrame();
                             }
                         }
-                        Debug.Log("CheckPoint 01");
                     }
 
 
@@ -290,6 +299,7 @@ public class Lot_Manager : MonoBehaviour
                                 yield return new WaitForEndOfFrame();
                             }
                         }
+                       
                         Debug.Log("CheckPoint 03");
                     }
                 }
@@ -308,6 +318,11 @@ public class Lot_Manager : MonoBehaviour
 
                     animator.SetBool("Celebrate", true);
 
+                    Sound_Manage_III.Instance._Play_Sound(7);
+
+                    GetComponentInChildren<ItemList>().enabled = true;
+                    GetComponentInChildren<Seeds>().enabled = true;
+
                     yield break;
                 }
                 else
@@ -319,7 +334,6 @@ public class Lot_Manager : MonoBehaviour
                     
                 _Transfering = false;
 
-                Debug.Log("end");
             }
         }
     }
@@ -334,6 +348,7 @@ public class Lot_Manager : MonoBehaviour
     private void ApplySeedFromPlayerInventory(Inventory inventory, GameObject Player)
     {
         //for the first time you plant a seed in the ground for the plant to grow
+
         Seeds currentSeeds;
         GameObject InventoryItem;
         for (int i = 0; i < inventory.InventoryItems.Count; i++)
@@ -343,8 +358,8 @@ public class Lot_Manager : MonoBehaviour
                 currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                 InventoryItem = inventory.InventoryItems[i].gameObject;
 
-                typeFlower = currentSeeds.flowerSeed;
-                itemForGrowth = flowerItemsForGrowth[(int)typeFlower];
+                typePlant = currentSeeds.typePlant;
+                itemForGrowth = flowerItemsForGrowth[(int)typePlant];
                 itemForGrowth.MaxAmountOfItemsNeeded();
                 break;
             }
@@ -367,4 +382,30 @@ public class Lot_Manager : MonoBehaviour
         }
     }
 
+    public void ResetAmountOfItems()
+    {
+        currentAmountOfAllItems = 0;
+
+        currentAmountOfSeeds = 0;
+
+        currentAmountOfSoil = 0;
+
+        currentAmountOfWater = 0;
+
+        currentAmountOfAllItemsPercentage = 0;
+
+        target = 0;
+
+        _Plant = null;
+
+        _Plant_Still_Growing = true;
+
+        _Plant_Done_Growing = false;
+
+        _Transfering = false;
+
+        itemForGrowth = null;
+
+        typePlant = TypePlant.None;
+    }
 }

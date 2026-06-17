@@ -17,13 +17,6 @@ public class ItemList : MonoBehaviour
 
     [SerializeField] public ObtainablItems obtainablItems;
 
-    private enum CropSeeds
-    {
-        
-    }
-    [SerializeField] private CropSeeds cropSeed;
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

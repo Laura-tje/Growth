@@ -164,6 +164,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 413fdcf10e8b81b41b028e0a6eb1504f, type: 2}
   - {fileID: 11400000, guid: 0f35bb4e89ebf194298b05265c9664d9, type: 2}
   - {fileID: 11400000, guid: 1fcb899eec06cb14e8b52b08102acc38, type: 2}
+  - {fileID: 11400000, guid: 6b27e04fd7e0f964794fd76972323955, type: 2}
+  - {fileID: 11400000, guid: c85d8809fad64ef4383dc2e0f4ceb1c9, type: 2}
+  - {fileID: 11400000, guid: 0595a04e7571f774287830fb4fd05b67, type: 2}
+  - {fileID: 11400000, guid: 02a8d1112e9d46d498b317d118e9a0c1, type: 2}
+  - {fileID: 11400000, guid: b23ad1e0f5e2a7c478afd14ea0c748e3, type: 2}
   maxScale: 2
   currentAmountOfSeeds: 0
   currentAmountOfWater: 0
@@ -172,4 +177,4 @@ MonoBehaviour:
   currentAmountOfAllItemsPercentage: 0
   seedPlacement: {fileID: 3141646692827529676}
   UpgradedObject: {fileID: 0}
-  typeFlower: -1
+  typePlant: -1

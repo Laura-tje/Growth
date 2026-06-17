@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5905473599712599607}
   - component: {fileID: 6029578764629341524}
   - component: {fileID: 3330594063644128520}
+  - component: {fileID: 681990108878456140}
   m_Layer: 6
   m_Name: Forget Me Not
   m_TagString: Items
@@ -128,3 +129,15 @@ MonoBehaviour:
   HpBar: {fileID: 0}
   mainCanvas: {fileID: 0}
   speed: 0
+--- !u!114 &681990108878456140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711909753205647225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018a454476d9a674aaac6db9d2e8f839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

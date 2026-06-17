@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Seeds : MonoBehaviour
 {
-    [SerializeField] public Lot_Manager.TypeFlowers flowerSeed;
+    [SerializeField] public Lot_Manager.TypePlant typePlant;
 
     [SerializeField] private float hitLives;
 
@@ -16,7 +16,7 @@ public class Seeds : MonoBehaviour
 
     private bool colliderTriggered;
 
-    [SerializeField] private Canvas mainCanvas;
+    [SerializeField] public Canvas mainCanvas;
 
     private Coroutine storedCoroutine;
 
@@ -25,10 +25,6 @@ public class Seeds : MonoBehaviour
     private Animator animator;
 
     public float speed;
-    private enum CropSeeds
-    {
-
-    }
 
     private void Awake()
     {
@@ -43,7 +39,7 @@ public class Seeds : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && other.GetComponentInChildren<Inventory>().InventoryItems.Count < other.GetComponentInChildren<Inventory>().InventorySlots.Count)
+        if (other.gameObject.tag == "Player" && other.GetComponentInChildren<Inventory>().InventoryItems.Count < other.GetComponentInChildren<Inventory>().InventorySlots.Count && GetComponent<Seeds>().enabled != false)
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = true;
@@ -51,6 +47,8 @@ public class Seeds : MonoBehaviour
             {
                 mainCanvas.gameObject.SetActive(true);
             }
+
+            Debug.Log("Works");
 
             animator = other.GetComponentInChildren<Animator>();
 
@@ -62,7 +60,7 @@ public class Seeds : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && GetComponent<Seeds>().enabled != false)
         {
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = false;
@@ -80,7 +78,11 @@ public class Seeds : MonoBehaviour
                 HpBar.fillAmount = 1;
                 hitLives = maxHitLives;
             }
-            animator.SetBool("Hoe", false);
+
+            if(animator != null)
+            {
+                animator.SetBool("Hoe", false);
+            }
         }
     }
 
@@ -139,6 +141,10 @@ public class Seeds : MonoBehaviour
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
                     Sound_Manage_III.Instance._Play_Sound(2);
                     animator.SetBool("Hoe", false);
+                    if(GetComponentInParent<Lot_Manager>() != null)
+                    {
+                        GetComponentInParent<Lot_Manager>().ResetAmountOfItems();
+                    }
                     Destroy(gameObject);
                     yield return null;
                 }

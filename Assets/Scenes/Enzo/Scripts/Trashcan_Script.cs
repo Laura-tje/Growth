@@ -31,12 +31,14 @@ public class Trashcan_Script : MonoBehaviour
         if (throwing == true && inventory.InventoryItems.Count > 0)
         {
             yield return new WaitForSeconds(1.5f);
-            Sound_Manage_III.Instance._Play_Sound(8);
+            //Sound_Manage_III.Instance._Play_Sound(8);
             foreach (GameObject item in inventory.InventoryItems)
             {
                 Destroy(item);  
             }
         }
         inventory.InventoryItems.Clear();
+        inventory.seeds.Clear();
+        inventory.currentHarvestedItem = null;
     }
 }

@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 5905473599712599607}
   - component: {fileID: 6029578764629341524}
   - component: {fileID: 3330594063644128520}
+  - component: {fileID: 2556880318200069034}
   m_Layer: 6
-  m_Name: Tulip Flower
+  m_Name: WaterMelon Seed
   m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6112366391706571187
 Transform:
@@ -29,9 +30,9 @@ Transform:
   m_GameObject: {fileID: 711909753205647225}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1007, z: 0.000000013094}
   m_LocalScale: {x: 0.939343, y: 0.939343, z: 0.939343}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7632510792d396e4abe42645d477a361, type: 2}
-  - {fileID: 2100000, guid: 2e46abd64fd30a140afb47112ded8a14, type: 2}
+  - {fileID: 2100000, guid: c74b6a0b3272a0944b738b0e954655fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,9 +123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 0
+  typePlant: 8
   hitLives: 0
   maxHitLives: 0
   HpBar: {fileID: 0}
   mainCanvas: {fileID: 0}
   speed: 0
+--- !u!114 &2556880318200069034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711909753205647225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018a454476d9a674aaac6db9d2e8f839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectRotation: {x: -90, y: 0, z: 0}
