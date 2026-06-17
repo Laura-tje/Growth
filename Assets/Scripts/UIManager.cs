@@ -61,20 +61,20 @@ public class UIManager : MonoBehaviour
 
         if (eventSystem == null)
         {
-            var es = GameObject.Find("EventSystem");
-            if (es != null)
+            GameObject EventSystem = GameObject.Find("EventSystem");
+            if (EventSystem != null)
             {
-                eventSystem = es.GetComponent<EventSystem>();
+                eventSystem = EventSystem.GetComponent<EventSystem>();
                 justFound = true;
             }
         }
 
         if (playerInput == null)
         {
-            var p = GameObject.Find("Player");
-            if (p != null)
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
             {
-                playerInput = p.GetComponent<PlayerInput>();
+                playerInput = player.GetComponent<PlayerInput>();
                 justFound = true;
             }
         }
@@ -89,30 +89,35 @@ public class UIManager : MonoBehaviour
     
     public void PauseButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.PauseMode;
         UpdateUI();
     }
 
     public void PlayButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.PlayMode;
         UpdateUI();
     }
 
     public void RestartButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.StartScreen;
         UpdateUI();
     }
 
     public void OptionsButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         currentState = Menu.OptionsMode;
         UpdateUI();
     }
 
     public void QuitButtonClicked()
     {
+        Sound_Manage_III.Instance._Play_Sound(1);
         Debug.Log("Game Afgesloten");
         Application.Quit();
     }

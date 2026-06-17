@@ -40,6 +40,7 @@ public class SoilFree : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && GeneratedSoil >= 1f)
         {
+            Sound_Manage_III.Instance._Play_Sound(2);
             Debug.Log("Player was hungry and got some soile");
             Inventory.AddObjectToInventory(gameObject);
             GeneratedSoil = 0f;
