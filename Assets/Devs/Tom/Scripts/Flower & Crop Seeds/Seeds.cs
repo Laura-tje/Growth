@@ -20,7 +20,11 @@ public class Seeds : MonoBehaviour
 
     private Coroutine storedCoroutine;
 
+    //private Coroutine lookCoroutine;
+
     private Animator animator;
+
+    public float speed;
     private enum CropSeeds
     {
 
@@ -48,10 +52,11 @@ public class Seeds : MonoBehaviour
                 mainCanvas.gameObject.SetActive(true);
             }
 
-
             animator = other.GetComponentInChildren<Animator>();
 
             storedCoroutine = StartCoroutine(WhackSeeds(other.gameObject));
+
+            //lookCoroutine = StartCoroutine(PlayerLookAt(other.gameObject));
         }
     }
 
@@ -62,7 +67,12 @@ public class Seeds : MonoBehaviour
             //other.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
             colliderTriggered = false;
 
-            StopCoroutine(storedCoroutine);
+            if(storedCoroutine != null)
+            {
+                StopCoroutine(storedCoroutine);
+            }
+
+            //StopCoroutine(lookCoroutine);
 
             if (mainCanvas != null)
             {
@@ -73,6 +83,30 @@ public class Seeds : MonoBehaviour
             animator.SetBool("Hoe", false);
         }
     }
+
+    //Work in Progress
+
+    //private IEnumerator PlayerLookAt(GameObject Player)
+    //{
+    //    PlayerControlls playerControlls = Player.GetComponentInChildren<PlayerControlls>();
+
+        
+    //    Quaternion lookRotation = Quaternion.LookRotation(transform.position - playerControlls._playerChild.transform.position);
+    //    //Quaternion lookRotation = Quaternion.LookRotation(transform.position, Player.GetComponent<PlayerControlls>()._playerChild.transform.position);
+
+    //    float time = 0;
+
+    //    while (time < 1)
+    //    {
+    //        playerControlls._playerChild.transform.rotation = Quaternion.Slerp(playerControlls._playerChild.transform.rotation, lookRotation, time);
+
+    //        time += Time.deltaTime * speed;
+
+    //        yield return null;
+    //    }
+    //}
+
+    //
 
     private IEnumerator WhackSeeds(GameObject player)
     {

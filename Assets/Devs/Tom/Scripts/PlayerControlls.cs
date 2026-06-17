@@ -9,7 +9,7 @@ public class PlayerControlls : MonoBehaviour
     private InputActionMap _currentMap;
 
     private InputAction _moveAction;
-    [SerializeField] private GameObject _playerChild;
+    [SerializeField] public GameObject _playerChild;
     public Vector3 move { get; private set; }
     [SerializeField] private float M_Speed;
 

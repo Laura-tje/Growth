@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour
         {
             ChosenItem = Random.Range(0, currentObtainableItemInRange.GetComponent<ItemList>().Item.Count);
 
+            Debug.Log(currentObtainableItemInRange.GetComponent<ItemList>().Item[ChosenItem].gameObject.transform.rotation.eulerAngles);
             InventoryItems.Add(currentHarvestedItem = Instantiate(currentObtainableItemInRange.GetComponent<ItemList>().Item[ChosenItem], gameObject.transform.position, gameObject.transform.rotation, gameObject.transform));
 
             if (currentObtainableItemInRange.GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
@@ -49,11 +50,16 @@ public class Inventory : MonoBehaviour
                 //currentObtainableItemInRange.GetComponent<Seeds>().Test();
             }
 
-            for (int i = 0; i < InventoryItems.Count; i++)
+            for (int i = 0; i < InventoryItems.Count; i++)  
             {
                 for (int j = 0; j < InventorySlots.Count; j++)
                 {
                     InventoryItems[i].gameObject.transform.position = InventorySlots[i].gameObject.transform.position;
+
+                    if (InventoryItems[i].GetComponent<Seeds>() != null)
+                    {
+                        InventoryItems[i].gameObject.transform.localRotation = Quaternion.Euler(-90, 90, 0);
+                    }
                 }
             }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6029578764629341524}
   - component: {fileID: 3330594063644128520}
   m_Layer: 6
-  m_Name: Rose Flower Seed
+  m_Name: Forget Me Not
   m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711909753205647225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.1007, z: 0.000000013094}
+  m_LocalScale: {x: 0.939343, y: 0.939343, z: 0.939343}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4243658335146927695
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711909753205647225}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -8800142453853476853, guid: fea9afe77ad0d864fbe49f483bf0c44b, type: 3}
 --- !u!23 &5905473599712599607
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84b9e58443f361e48b38d8c38ce36302, type: 2}
+  - {fileID: 2100000, guid: 7632510792d396e4abe42645d477a361, type: 2}
+  - {fileID: 2100000, guid: aaf98275f222a2c44955d5e4b66f4c3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,8 +108,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.3707887
+  m_Center: {x: 0, y: -4.329691e-16, z: 0.2292113}
 --- !u!114 &3330594063644128520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,4 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 0
+  flowerSeed: 2
+  hitLives: 0
+  maxHitLives: 0
+  HpBar: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  speed: 0

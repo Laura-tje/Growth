@@ -46,9 +46,9 @@ public class Lot_Manager : MonoBehaviour
     public enum TypeFlowers
     {
         None = -1,
-        Rose = 0,
+        Tulip = 0,
         Lily = 1,
-        Lavender = 2,
+        Forget_Me_not = 2,
         Sunflower = 3
     }
 
@@ -124,11 +124,11 @@ public class Lot_Manager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && _Plant_Still_Growing && _Transfering)
         {
-            if (storedCoroutine != null)
-            {
-                //Stopping coroutine to prevent bugs
-                StopCoroutine(storedCoroutine);
-            }
+            //if (storedCoroutine != null)
+            //{
+            //    //Stopping coroutine to prevent bugs
+            //    StopCoroutine(storedCoroutine);
+            //}
 
             _Transfering = false;
 
@@ -213,9 +213,11 @@ public class Lot_Manager : MonoBehaviour
                             {
                                 //make the actual plant appear in the game that will be growing and get the start size of the plant before it grows
                                 startScale = itemForGrowth.plantToGrow.transform.localScale.x;
-                                _Plant = Instantiate(itemForGrowth.plantToGrow, seedPlacement.transform.position, seedPlacement.transform.rotation, seedPlacement.transform);
+                                _Plant = Instantiate(itemForGrowth.plantToGrow, seedPlacement.transform.position, itemForGrowth.plantToGrow.transform.rotation, seedPlacement.transform);
                             }
                         }
+
+
                         if (InventoryItem.transform.position == gameObject.transform.position)
                         {
                             //Increase the current amount of seeds the plant has and increase it's size equal to the amount of items currently taken
@@ -224,11 +226,13 @@ public class Lot_Manager : MonoBehaviour
                             Destroy(InventoryItem);
                             while (_Plant.transform.localScale != targetVector3)
                             {
-                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
+                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
+                        Debug.Log("CheckPoint 01");
                     }
+
 
                     else if (inventory.InventoryItems[i].GetComponent<Water>() != null && itemForGrowth.waterNeeded > 0 && currentAmountOfWater < itemForGrowth.waterNeeded && currentAmountOfSeeds > 0)
                     {
@@ -250,10 +254,11 @@ public class Lot_Manager : MonoBehaviour
                             Destroy(InventoryItem);
                             while (_Plant.transform.localScale != targetVector3)
                             {
-                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
+                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
+                        Debug.Log("CheckPoint 02");
                     }
 
                     else if (inventory.InventoryItems[i].GetComponent<Soil>() != null && itemForGrowth.soilNeeded > 0 && currentAmountOfSoil < itemForGrowth.soilNeeded && currentAmountOfSeeds > 0)
@@ -277,10 +282,11 @@ public class Lot_Manager : MonoBehaviour
                             Destroy(InventoryItem);
                             while (_Plant.transform.localScale != targetVector3)
                             {
-                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 5);
+                                _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
+                        Debug.Log("CheckPoint 03");
                     }
                 }
 
@@ -288,7 +294,7 @@ public class Lot_Manager : MonoBehaviour
                 if (currentAmountOfAllItems >= itemForGrowth.allItemsNeeded)
                 {
                     _Plant_Still_Growing = false;
-
+                        
                     _Plant_Done_Growing = true;
 
                     if (UpgradedObject != null)
@@ -306,8 +312,10 @@ public class Lot_Manager : MonoBehaviour
 
                     _Plant_Done_Growing = false;
                 }
-
+                    
                 _Transfering = false;
+
+                Debug.Log("end");
             }
         }
     }
@@ -347,7 +355,7 @@ public class Lot_Manager : MonoBehaviour
         if (itemForGrowth != null)
         {
             currentAmountOfAllItemsPercentage = currentAmountOfAllItems / itemForGrowth.allItemsNeeded * 1;
-            target = currentAmountOfAllItemsPercentage * (maxScale - startScale);
+            target = currentAmountOfAllItemsPercentage * ((startScale * maxScale) - startScale);
             target = target + startScale;
             targetVector3 = new Vector3(target, target, target);
         }
