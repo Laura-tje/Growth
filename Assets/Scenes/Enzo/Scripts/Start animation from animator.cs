@@ -13,4 +13,10 @@ public class Startanimationfromanimator : MonoBehaviour
     {
         animation.SetBool("Watering", false);
     }
+
+
+    public void PlayWhackSound()
+    {
+        Sound_Manage_III.Instance._Play_Sound(5);
+    }
 }

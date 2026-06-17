@@ -137,6 +137,7 @@ public class Seeds : MonoBehaviour
                 if (hitLives <= 0)
                 {
                     player.GetComponentInChildren<Inventory>().AddObjectToInventory(gameObject);
+                    Sound_Manage_III.Instance._Play_Sound(2);
                     animator.SetBool("Hoe", false);
                     Destroy(gameObject);
                     yield return null;

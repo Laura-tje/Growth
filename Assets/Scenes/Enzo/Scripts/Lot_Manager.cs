@@ -227,6 +227,7 @@ public class Lot_Manager : MonoBehaviour
                             while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
+                                Sound_Manage_III.Instance._Play_Sound(3);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
@@ -256,6 +257,7 @@ public class Lot_Manager : MonoBehaviour
                             while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
+                                Sound_Manage_III.Instance._Play_Sound(3);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
@@ -284,6 +286,7 @@ public class Lot_Manager : MonoBehaviour
                             while (_Plant.transform.localScale != targetVector3)
                             {
                                 _Plant.transform.localScale = Vector3.MoveTowards(_Plant.transform.localScale, targetVector3, Time.deltaTime * 1000);
+                                Sound_Manage_III.Instance._Play_Sound(3);
                                 yield return new WaitForEndOfFrame();
                             }
                         }
