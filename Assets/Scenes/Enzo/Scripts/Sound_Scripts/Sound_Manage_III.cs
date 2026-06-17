@@ -2,32 +2,76 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
-public enum SoundType
-{
-
-    //Sound goes here.
-    RED, BLUE, GREEN, ORANGE, YELLOW, WHITE, BLACK
-
-}
 
 [RequireComponent(typeof(AudioSource))]
 public class Sound_Manage_III : MonoBehaviour
 {
+    public enum SoundType
+    {
+    
+        //Sound goes here.
+        backgroundMusic = 0,
+        click = 1, 
+        grab = 2, 
+        grow = 3, 
+        water = 4, 
+        whacking = 5, 
+        upgrading = 6, 
+        flying = 7,
+        deleting = 8,
+    
+    }
+    
     [SerializeField] private AudioClip[] _Sound_Clips;
-    private static Sound_Manage_III _Instance;
-    private AudioSource _Audio_Source;
+    public static Sound_Manage_III Instance;
+    [SerializeField] private AudioSource _Audio_Source;
+    [SerializeField] private AudioSource musicSource;
+    private bool SoundOn = true;
 
+
+    public void SwitchSoundToggle()
+    {
+        if (SoundOn)
+        {
+            SoundOn = false;
+            musicSource.Pause();
+        }
+        else
+        {
+            SoundOn = true;
+            musicSource.Play();
+        }
+    }
+    
     private void Awake()
     {
-        _Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } 
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
     private void Start()
     {
-        _Audio_Source = GetComponent<AudioSource>();
+        //_Audio_Source = GetComponent<AudioSource>();
+        musicSource.loop = true;
+        musicSource.clip = _Sound_Clips[0];
+        musicSource.Play();
     }
-    public static void _Play_Sound(SoundType _Sound, float _Volume = 1.0f)
+    public void _Play_Sound(int index)
     {
-        _Instance._Audio_Source.PlayOneShot(_Instance._Sound_Clips[(int) _Sound], _Volume);
+        if (SoundOn)
+        {
+            _Audio_Source.PlayOneShot(_Sound_Clips[index]);
+            Debug.Log(index);
+        }
+
     }
+    
+    
 
 }

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 public class SoilBox : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class SoilBox : MonoBehaviour
     [SerializeField] private SoilUpdater updaterScript;
 
     [SerializeField] private GameObject hive;
+    
+    [SerializeField] private List<GameObject> Lots;
+    private GameObject targetedLot;
 
     public enum SoilState
     {
@@ -33,30 +38,25 @@ public class SoilBox : MonoBehaviour
     void Update()
     {
         GenerateSoil();
+
+        if (GeneratedSoil >= 1f)
+        {
+            GeneratedSoil = 0f;
+            FindValidLot(Lots);
+        }
         
         textAmountSoil.text = GeneratedSoil.ToString();
 
         SetModelsActive();
     }
 
-    //player getting water
-    private void OnTriggerStay(Collider other) 
-    {
-        if (other.gameObject.name == "Player" && math.round(GeneratedSoil) > 0)
-        {
-            Debug.Log("Player was hungry and got some soil");
-            float number = GeneratedSoil;
-            Inventory.AddObjectToInventory(gameObject);
-            GeneratedSoil -= number;
-            PassedTime = 0f;
-        };
-    }
 
     public void UpdateSoil()
     {
         switch (currentState)
         {
             case SoilState.Empty:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState =  SoilState.Hive;
                 updaterScript.UpdateNeededAmount();
                 break;
@@ -85,4 +85,31 @@ public class SoilBox : MonoBehaviour
             PassedTime = 0f;
         }
     }
+
+    private void FindValidLot(List<GameObject> Lots)
+    {
+        List<GameObject> ValidLots = new List<GameObject>();
+        foreach (GameObject lot in Lots)
+        {
+            //if valid, add to validlots
+            if (lot.GetComponent<Lot_Manager>().currentAmountOfSoil < 1)
+            {
+                ValidLots.Add(lot);
+            };
+        }
+        FindLot(ValidLots);
+    }
+
+    private void FindLot(List<GameObject> ValidLots)
+    {
+        targetedLot = ValidLots[Random.Range(0, ValidLots.Count)];
+        SoilLot(targetedLot);
+    }
+
+    private void SoilLot(GameObject Lot)
+    {
+        //soil the lot
+        Lot.GetComponent<Lot_Manager>().currentAmountOfSoil++;
+    }
+    
 }

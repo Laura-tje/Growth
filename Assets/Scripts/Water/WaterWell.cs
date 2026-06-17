@@ -2,6 +2,8 @@ using System;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class WaterWell : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class WaterWell : MonoBehaviour
     [SerializeField] private GameObject can;
     [SerializeField] private GameObject hose;
     [SerializeField] private GameObject well;
+    
+    [SerializeField] private List<GameObject> Lots;
+    private GameObject targetedLot;
 
     public enum WaterState
     {
@@ -38,38 +43,35 @@ public class WaterWell : MonoBehaviour
     void Update()
     {
         GenerateWater();
+
+        if (GeneratedWater >= 1f)
+        {
+            GeneratedWater = 0f;
+            FindValidLot(Lots);
+        }
         
         textAmountWater.text = GeneratedWater.ToString();
 
         SetModelsActive();
     }
-
-    //player getting water
-    private void OnTriggerStay(Collider other) 
-    {
-        if (other.gameObject.name == "Player" && math.round(GeneratedWater) > 0)
-        {
-            Debug.Log("Player was thirsty and got some water");
-            float number = GeneratedWater;
-            Inventory.AddObjectToInventory(gameObject);
-            GeneratedWater -= number;
-            PassedTime = 0f;
-        };
-    }
+    
 
     public void UpdateWell() //called in waterupdater
     {
         switch (currentState)
         {
             case WaterState.Empty:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Can;
                 updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Can:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Hose;
                 updaterScript.UpdateNeededAmount();
                 break;
             case WaterState.Hose:
+                Sound_Manage_III.Instance._Play_Sound(6);
                 currentState = WaterState.Well;
                 updaterScript.UpdateNeededAmount();
                 break;
@@ -98,5 +100,32 @@ public class WaterWell : MonoBehaviour
             GeneratedWater = 1f;
             PassedTime = 0f;
         }
+    }
+
+    private void FindValidLot(List<GameObject> Lots)
+    {
+        List<GameObject> ValidLots = new List<GameObject>();
+        foreach (GameObject lot in Lots)
+        {
+            //if valid, add to validlots
+            if (lot.GetComponent<Lot_Manager>().currentAmountOfWater < 1)
+            {
+                ValidLots.Add(lot);
+            }
+        }
+
+        FindLot(ValidLots);
+    }
+
+    private void FindLot(List<GameObject> ValidLots)
+    {
+        targetedLot = ValidLots[Random.Range(0, ValidLots.Count)];
+        WaterLot(targetedLot);
+    }
+
+    private void WaterLot(GameObject Lot)
+    {
+        //water the lot
+        Lot.GetComponent<Lot_Manager>().currentAmountOfWater++;
     }
 }
