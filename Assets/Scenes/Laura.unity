@@ -2864,6 +2864,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7996046684131854386, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
+      propertyPath: UpgradeParticle
+      value: 
+      objectReference: {fileID: 3237732458817399447, guid: 41fed0e9016a0ce4bb14f58da8c33453, type: 3}
+    - target: {fileID: 7996046684131854386, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
       propertyPath: 'Lots.Array.data[0]'
       value: 
       objectReference: {fileID: 922924913}
@@ -2903,6 +2907,10 @@ PrefabInstance:
       propertyPath: 'Lots.Array.data[9]'
       value: 
       objectReference: {fileID: 133033766}
+    - target: {fileID: 8981298850592932269, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
+      propertyPath: 'upgradeRequirements.Array.data[0]'
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9018692765086866707, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
       propertyPath: m_Name
       value: Well
@@ -2924,6 +2932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soil Box
       objectReference: {fileID: 0}
+    - target: {fileID: 2093044431363822748, guid: 0aafa8cd621b978488601279564e533f, type: 3}
+      propertyPath: UpgradeParticle
+      value: 
+      objectReference: {fileID: 3237732458817399447, guid: 41fed0e9016a0ce4bb14f58da8c33453, type: 3}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -483.001

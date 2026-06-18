@@ -23,6 +23,8 @@ public class WaterWell : MonoBehaviour
     
     [SerializeField] private List<GameObject> Lots;
     private GameObject targetedLot;
+    
+    [SerializeField] private GameObject UpgradeParticle;
 
     public enum WaterState
     {
@@ -58,6 +60,7 @@ public class WaterWell : MonoBehaviour
 
     public void UpdateWell() //called in waterupdater
     {
+        Instantiate(UpgradeParticle, transform.position, Quaternion.identity );
         switch (currentState)
         {
             case WaterState.Empty:

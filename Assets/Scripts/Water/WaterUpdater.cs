@@ -16,6 +16,8 @@ public class WaterUpdater : MonoBehaviour
     [SerializeField] private float[] upgradeRequirements = { 5f, 10f, 20f };
     private int currentUpgradeIndex = 0;
     
+    //[SerializeField] private GameObject UpgradeParticle;
+    
     void Start()
     {
         Well = GetComponentInParent<WaterWell>();
