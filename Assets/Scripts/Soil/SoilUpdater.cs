@@ -14,6 +14,8 @@ public class SoilUpdater : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ItemsNeededText;
     [SerializeField] private float[] upgradeRequirements = { 20f };
     private int currentUpgradeIndex = 0;
+
+    private GameObject removedItem;
     
     //[SerializeField] private GameObject UpgradeParticle;
     
@@ -67,12 +69,13 @@ public class SoilUpdater : MonoBehaviour
                 neededAmount = 0;
                 Soil.UpdateSoil();
                 //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
                 {
                     if (inventoryScript.InventoryItems[i].CompareTag("Flower"))
                     {
+                        removedItem = inventoryScript.InventoryItems[i].gameObject;
                         inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
-                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                        Destroy(removedItem);
                     }
                 }
                 amountOfFlowers = 0;
@@ -84,12 +87,13 @@ public class SoilUpdater : MonoBehaviour
                 upgradeRequirements[currentUpgradeIndex] -= amountOfFlowers;
                 ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
                 {
                     if (inventoryScript.InventoryItems[i].CompareTag("Flower"))
                     {
+                        removedItem = inventoryScript.InventoryItems[i].gameObject;
                         inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
-                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                        Destroy(removedItem);
                     }
                 }
                 amountOfFlowers = 0;
