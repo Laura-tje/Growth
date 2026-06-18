@@ -15,6 +15,8 @@ public class WaterUpdater : MonoBehaviour
     [SerializeField] TextMeshProUGUI ItemsNeededText;
     [SerializeField] private float[] upgradeRequirements = { 5f, 10f, 20f };
     private int currentUpgradeIndex = 0;
+
+    private GameObject removedItem;
     
     //[SerializeField] private GameObject UpgradeParticle;
     
@@ -69,12 +71,13 @@ public class WaterUpdater : MonoBehaviour
                 upgradeRequirements[currentUpgradeIndex] = 0;
                 Well.UpdateWell();
                 //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
                 {
                     if (inventoryScript.InventoryItems[i].CompareTag("Crop"))
                     {
+                        removedItem = inventoryScript.InventoryItems[i].gameObject;
                         inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
-                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                        Destroy(removedItem);
                     }
                 }
                 amountOfCrops = 0;
@@ -86,12 +89,13 @@ public class WaterUpdater : MonoBehaviour
                 upgradeRequirements[currentUpgradeIndex] -= amountOfCrops;
                 ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                for (int i = 0; i < inventoryScript.InventoryItems.Count; i++)
                 {
                     if (inventoryScript.InventoryItems[i].CompareTag("Crop"))
                     {
+                        removedItem = inventoryScript.InventoryItems[i].gameObject;
                         inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
-                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                        Destroy(removedItem);
                     }
                 }
                 amountOfCrops = 0;
