@@ -15,6 +15,8 @@ public class SoilUpdater : MonoBehaviour
     [SerializeField] private float[] upgradeRequirements = { 20f };
     private int currentUpgradeIndex = 0;
     
+    //[SerializeField] private GameObject UpgradeParticle;
+    
     void Start()
     {
         Soil = GetComponentInParent<SoilBox>();

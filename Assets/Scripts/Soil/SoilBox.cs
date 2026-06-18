@@ -21,6 +21,8 @@ public class SoilBox : MonoBehaviour
     [SerializeField] private List<GameObject> Lots;
     private GameObject targetedLot;
 
+    [SerializeField] private GameObject UpgradeParticle;
+
     public enum SoilState
     {
         Empty,
@@ -53,6 +55,7 @@ public class SoilBox : MonoBehaviour
 
     public void UpdateSoil()
     {
+        Instantiate(UpgradeParticle, transform.position, Quaternion.identity);
         switch (currentState)
         {
             case SoilState.Empty:

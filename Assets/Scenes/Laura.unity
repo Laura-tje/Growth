@@ -2137,6 +2137,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!20 &1346628528 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4655955920541733365, guid: 9cb5defd25b1ff346b2aee791a231b0e, type: 3}
+  m_PrefabInstance: {fileID: 1106735719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1370076786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2859,6 +2864,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7996046684131854386, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
+      propertyPath: UpgradeParticle
+      value: 
+      objectReference: {fileID: 3237732458817399447, guid: 41fed0e9016a0ce4bb14f58da8c33453, type: 3}
+    - target: {fileID: 7996046684131854386, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
       propertyPath: 'Lots.Array.data[0]'
       value: 
       objectReference: {fileID: 922924913}
@@ -2898,6 +2907,10 @@ PrefabInstance:
       propertyPath: 'Lots.Array.data[9]'
       value: 
       objectReference: {fileID: 133033766}
+    - target: {fileID: 8981298850592932269, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
+      propertyPath: 'upgradeRequirements.Array.data[0]'
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9018692765086866707, guid: 8960a23e80a468f4483ec2e81ffefdfb, type: 3}
       propertyPath: m_Name
       value: Well
@@ -2919,6 +2932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soil Box
       objectReference: {fileID: 0}
+    - target: {fileID: 2093044431363822748, guid: 0aafa8cd621b978488601279564e533f, type: 3}
+      propertyPath: UpgradeParticle
+      value: 
+      objectReference: {fileID: 3237732458817399447, guid: 41fed0e9016a0ce4bb14f58da8c33453, type: 3}
     - target: {fileID: 2966065713136179229, guid: 0aafa8cd621b978488601279564e533f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -483.001
@@ -3170,15 +3187,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 896666504995436967, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1401
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 896666504995436967, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.97819704
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 896666504995436967, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773842554137498026, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773842554137498026, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773842554137498026, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2074234371094039732, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -3208,9 +3237,45 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2244037510376508731, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.46
+      objectReference: {fileID: 0}
     - target: {fileID: 2790704255186377344, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -411
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628033172581390727, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628033172581390727, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658333138379351396, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658333138379351396, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 864.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658333138379351396, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 446.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952086189761039494, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7873065669700950048, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1346628528}
+    - target: {fileID: 7873065669700950048, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_Pivot.x
@@ -3242,6 +3307,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8656168515340911541, guid: 53768e321b68054499628a9951d309d0, type: 3}
