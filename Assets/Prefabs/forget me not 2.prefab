@@ -695,12 +695,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6980744601732192534}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4067199564477073217}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8906170140519780743}
   m_SourcePrefab: {fileID: 100100000, guid: 78eba7e170b79594d8a12be097b9ef24, type: 3}
 --- !u!1 &4532932725110363607 stripped
 GameObject:
@@ -728,35 +722,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.2, z: 0.1}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &4067199564477073217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532932725110363607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typePlant: 2
-  hitLives: 0
-  maxHitLives: 0
-  HpBar: {fileID: 0}
-  mainCanvas: {fileID: 0}
-  speed: 0
---- !u!114 &8906170140519780743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532932725110363607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: []
-  obtainablItems: 3

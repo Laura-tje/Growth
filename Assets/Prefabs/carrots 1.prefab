@@ -82,37 +82,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b62e6d5f737d0744b84fac56a61536f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3063462267135217620}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b62e6d5f737d0744b84fac56a61536f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1591965806713428429}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b62e6d5f737d0744b84fac56a61536f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6628978697542098220}
   m_SourcePrefab: {fileID: 100100000, guid: 8b62e6d5f737d0744b84fac56a61536f, type: 3}
 --- !u!1 &5851333194880254067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b62e6d5f737d0744b84fac56a61536f, type: 3}
   m_PrefabInstance: {fileID: 6770446636096634146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3063462267135217620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5851333194880254067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typePlant: 4
-  hitLives: 0
-  maxHitLives: 0
-  HpBar: {fileID: 0}
-  mainCanvas: {fileID: 0}
-  speed: 0
 --- !u!65 &1591965806713428429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -134,17 +110,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0057208985, y: 0.006264879, z: 0.005396398}
   m_Center: {x: 0.0009258542, y: -0.0019045918, z: -0.00004794364}
---- !u!114 &6628978697542098220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5851333194880254067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20b423d5e827c94b937174638a42836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: []
-  obtainablItems: 4
