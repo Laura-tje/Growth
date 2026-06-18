@@ -521,7 +521,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.0054709585, y: 0.0065336446, z: 0.015081476}
   m_Center: {x: 0.000020300735, y: 0.0004978548, z: 0.00765065}
@@ -561,7 +561,6 @@ MonoBehaviour:
   Item:
   - {fileID: 528264664835093720, guid: 7c65b36acc7b5d4499a265ccc668d383, type: 3}
   obtainablItems: 3
-  cropSeed: 0
 --- !u!114 &1405989260009944805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 3
+  typePlant: 0
   hitLives: 0
   maxHitLives: 2
   HpBar: {fileID: 7074285091287792912}

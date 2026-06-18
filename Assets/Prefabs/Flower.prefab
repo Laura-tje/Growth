@@ -105,11 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item:
   - {fileID: 711909753205647225, guid: 2dd53204b27afed428f77be8b64f5228, type: 3}
-  - {fileID: 711909753205647225, guid: b1993c5617acf87409992044d452d141, type: 3}
+  - {fileID: 711909753205647225, guid: 5736dc5ea0cfee1498e808b2ee6a849e, type: 3}
   - {fileID: 711909753205647225, guid: a3efec4404a827846b4dc5b553d7a41d, type: 3}
-  - {fileID: 711909753205647225, guid: 8104573a647108a4e82fc8f9209c17f2, type: 3}
+  - {fileID: 711909753205647225, guid: b3f907c5ab9915d4bbf5f289ca29ca76, type: 3}
   obtainablItems: 0
-  cropSeed: 0
 --- !u!135 &1438636524214871713
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -164,11 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3530eafd2558a84c810db5029fd0ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerSeed: 0
+  typePlant: 0
   hitLives: 3
   maxHitLives: 3
   HpBar: {fileID: 4634029866357177752}
   mainCanvas: {fileID: 1290721041535633951}
+  speed: 0
 --- !u!1 &2633464000025525030
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,10 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cd601703903a447b3d95addefaa3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  billboardType: 1
   lockX: 0
   lockY: 1
   lockZ: 1
-  billboardType: 1
 --- !u!1 &4899211658189559854
 GameObject:
   m_ObjectHideFlags: 0

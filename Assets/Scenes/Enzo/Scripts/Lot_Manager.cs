@@ -193,7 +193,7 @@ public class Lot_Manager : MonoBehaviour
 
                 for (int i = 0; i < inventory.InventoryItems.Count; i++)
                 {
-                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded )
+                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded)
                     {
                         currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                         InventoryItem = inventory.InventoryItems[i].gameObject;
