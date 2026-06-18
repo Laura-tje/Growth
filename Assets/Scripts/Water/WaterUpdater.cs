@@ -69,6 +69,14 @@ public class WaterUpdater : MonoBehaviour
                 upgradeRequirements[currentUpgradeIndex] = 0;
                 Well.UpdateWell();
                 //inventory -= neededamount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                {
+                    if (inventoryScript.InventoryItems[i].CompareTag("Crop"))
+                    {
+                        inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
+                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                    }
+                }
                 amountOfCrops = 0;
                 ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 Debug.Log("The player successfully updated the water well to convenience himself. How selfish...");
@@ -78,6 +86,14 @@ public class WaterUpdater : MonoBehaviour
                 upgradeRequirements[currentUpgradeIndex] -= amountOfCrops;
                 ItemsNeededText.text = upgradeRequirements[currentUpgradeIndex].ToString();
                 //neededamount -= amount; take them from inventory!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                for (int i = 0; i < upgradeRequirements[currentUpgradeIndex]; i++)
+                {
+                    if (inventoryScript.InventoryItems[i].CompareTag("Crop"))
+                    {
+                        inventoryScript.InventoryItems.Remove(inventoryScript.InventoryItems[i]);
+                        Destroy(inventoryScript.InventoryItems[i].gameObject);
+                    }
+                }
                 amountOfCrops = 0;
                 Debug.Log("The player has miscounted their crops and has to go get more. Until then the crops will be safely putt away.");
 
