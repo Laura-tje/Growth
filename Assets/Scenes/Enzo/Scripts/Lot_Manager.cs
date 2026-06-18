@@ -193,7 +193,7 @@ public class Lot_Manager : MonoBehaviour
 
                 for (int i = 0; i < inventory.InventoryItems.Count; i++)
                 {
-                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded && inventory.InventoryItems[i].gameObject.tag == "Items")
+                    if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && itemForGrowth.seedsNeeded > 0 && currentAmountOfSeeds < itemForGrowth.seedsNeeded )
                     {
                         currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                         InventoryItem = inventory.InventoryItems[i].gameObject;
@@ -353,7 +353,7 @@ public class Lot_Manager : MonoBehaviour
         GameObject InventoryItem;
         for (int i = 0; i < inventory.InventoryItems.Count; i++)
         {
-            if (inventory.InventoryItems[i].GetComponent<Seeds>() != null)
+            if (inventory.InventoryItems[i].GetComponent<Seeds>() != null && inventory.InventoryItems[i].GetComponent<ItemList>().obtainablItems == ItemList.ObtainablItems.Seed)
             {
                 currentSeeds = inventory.InventoryItems[i].GetComponent<Seeds>();
                 InventoryItem = inventory.InventoryItems[i].gameObject;
@@ -407,5 +407,7 @@ public class Lot_Manager : MonoBehaviour
         itemForGrowth = null;
 
         typePlant = TypePlant.None;
+
+        Debug.Log("BoB");
     }
 }

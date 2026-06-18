@@ -143,6 +143,7 @@ public class Seeds : MonoBehaviour
                     animator.SetBool("Hoe", false);
                     if(GetComponentInParent<Lot_Manager>() != null)
                     {
+                        Debug.Log("Workkkssss");
                         GetComponentInParent<Lot_Manager>().ResetAmountOfItems();
                     }
                     Destroy(gameObject);
